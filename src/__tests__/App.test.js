@@ -5,8 +5,14 @@ import App from '../App';
 
 describe('App', () => {
   test('renders App', () => {
-    const { getByText } = render(<App />);
-    const app = getByText('App');
+    const { getByTestId } = render(<App />);
+    const app = getByTestId('app');
     expect(app).toBeInTheDocument();
+  });
+
+  test('renders Header', () => {
+    const { getByTestId } = render(<App />);
+    const headerNode = getByTestId('header');
+    expect(headerNode).toBeInTheDocument();
   });
 });
