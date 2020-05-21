@@ -51,7 +51,7 @@ SVG Icons - svgicons.sparkk.fr
   transform: rotateY(180deg);
 }
 
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 411px) {
   .svg-wrapper {
     width: 2.5rem;
     height: 2.5rem;
