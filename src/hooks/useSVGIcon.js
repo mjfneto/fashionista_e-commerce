@@ -1,16 +1,11 @@
 import React from 'react';
 import SVGLib from '../assets/SVGLib';
 
-const useSVGIcon = (icon) => {
+const useSVGIcon = ({ icon, ...config }) => {
   return [
     () => (
       <a className="svg-wrapper" href="/">
-        <svg
-          className={`svg-icon ${icon}`}
-          viewBox="0 0 20 20"
-        >
-          {SVGLib[icon]()}
-        </svg>
+        {SVGLib[icon](config)}
       </a>
     ),
   ];

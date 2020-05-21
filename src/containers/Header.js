@@ -4,18 +4,25 @@ import './Header.css';
 import useSVGIcon from '../hooks/useSVGIcon';
 
 const Header = () => {
-  const [SearchIcon] = useSVGIcon('search');
-  const [ShoppingBagIcon] = useSVGIcon('shoppingBag');
-  const [WishListIcon] = useSVGIcon('wishList');
+  const [SearchIcon] = useSVGIcon({
+    icon: 'search',
+    className: 'search',
+  });
+  const [ShoppingBagIcon] = useSVGIcon({
+    icon: 'shoppingBag',
+  });
+  const [WishListIcon] = useSVGIcon({ icon: 'wishlist' });
 
   return (
     <header className="header" data-testid="header">
       <div className="container">
-        <img
-          className="header__logo"
-          src={logo}
-          alt="Fashionista logo"
-        />
+        <a href="/">
+          <img
+            className="header__logo"
+            src={logo}
+            alt="Fashionista logo"
+          />
+        </a>
         <nav className="header__nav">
           <SearchIcon />
           <WishListIcon />
