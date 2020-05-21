@@ -1,0 +1,46 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.02);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+}
+
+.header__logo {
+  width: 16rem;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 360px) {
+  .header .container {
+    padding: 1.25rem 1.6rem;
+  }
+
+  .header__logo {
+    width: 18rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header__logo {
+    width: 24rem;
+  }
+}
+
+@media screen and (min-width: 812px) {
+  .header__logo {
+    width: 28rem;
+  }
+}

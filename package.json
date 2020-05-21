@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -30,6 +31,8 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.2",
     "jest": "^26.0.1",
+    "postcss-normalize": "^9.0.0",
     "prettier": "^2.0.5"
-  }
+  },
+  "browserslist": "last 2 versions"
 }
