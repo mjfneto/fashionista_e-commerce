@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from '../App';
+import App from './App';
 
 describe('App', () => {
   test('renders App', () => {
@@ -10,9 +10,12 @@ describe('App', () => {
     expect(app).toBeInTheDocument();
   });
 
-  test('renders Header', () => {
+  test('renders its immediate child container components', () => {
     const { getByTestId } = render(<App />);
-    const headerNode = getByTestId('header');
-    expect(headerNode).toBeInTheDocument();
+    const header = getByTestId('header');
+    const catalog = getByTestId('catalog');
+
+    expect(header).toBeInTheDocument();
+    expect(catalog).toBeInTheDocument();
   });
 });

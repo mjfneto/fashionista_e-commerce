@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Header from '../containers/Header';
+import Header from './Header';
 
 describe('Header', () => {
   test('renders logo', async () => {

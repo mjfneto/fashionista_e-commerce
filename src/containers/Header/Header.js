@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from '../assets/images/fashionista-logo.svg';
+import logo from '../../assets/images/fashionista-logo.svg';
 import './Header.css';
-import useSVGIcon from '../hooks/useSVGIcon';
+import useSVGIcon from '../../hooks/useSVGIcon';
 
 const Header = () => {
   const [SearchIcon] = useSVGIcon({
