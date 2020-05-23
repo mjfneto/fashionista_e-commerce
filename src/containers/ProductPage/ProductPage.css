@@ -37,30 +37,7 @@
   color: limegreen;
 }
 
-.product-page__form {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-page__radio-group {
-  display: flex;
-  flex-flow: row wrap;
-  margin: 2.63rem;
-}
-
-.product-page__radio {
-  margin: 0 2rem 2rem 0;
-}
-
-.product-page__radio label {
-  margin-left: 0.6rem;
-}
-
-.product-page__submit {
-  padding: 1rem;
-}
-
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 790px) {
   .product-page {
     flex-flow: row nowrap;
     justify-content: space-around;

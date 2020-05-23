@@ -1,0 +1,26 @@
+.product-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-form__radio-group {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 2.63rem;
+}
+
+.product-form__radio {
+  margin: 0 2rem 2rem 0;
+}
+
+.product-form__radio label {
+  margin-left: 0.6rem;
+}
+
+.product-form__submit {
+  padding: 1rem;
+}
+
+.product-form__submit:hover {
+  cursor: pointer;
+}

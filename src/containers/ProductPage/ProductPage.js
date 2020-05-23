@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProductForm from '../../components/ProductForm/ProductForm';
 import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 import './ProductPage.css';
 
@@ -52,33 +53,7 @@ const Product = ({ location }) => {
             </p>
             <p>{installments}</p>
             <h3>Escolha o tamanho:</h3>
-            <form className="product-page__form">
-              <div className="product-page__radio-group">
-                {sizes
-                  .filter(({ available }) => available)
-                  .map(({ size }, idx) => (
-                    <div
-                      key={`size-${size}`}
-                      className="product-page__radio"
-                    >
-                      <input
-                        id={`size-${idx}`}
-                        type="radio"
-                        name="size"
-                        value={size}
-                      ></input>
-                      <label htmlFor={`size-${idx}`}>
-                        {size}
-                      </label>
-                    </div>
-                  ))}
-              </div>
-              <input
-                className="product-page__submit"
-                type="submit"
-                value="Adicionar à bolsa de compras"
-              />
-            </form>
+            <ProductForm sizes={sizes} />
           </div>
         </figcaption>
       </figure>
