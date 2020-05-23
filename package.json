@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@reach/router": "^1.3.3",
     "normalize.css": "^8.0.1",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
