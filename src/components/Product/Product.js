@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import fallbackPlaceholder from '../assets/images/fallback-placeholder.png';
+import { Link } from '@reach/router';
+import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 import './Product.css';
 
 const Product = ({ product }) => {
@@ -18,9 +19,18 @@ const Product = ({ product }) => {
     setPlaceholder(true);
   };
 
+  const routeName = name
+    .trim()
+    .toLowerCase()
+    .replace(/ /g, '-');
+
   return (
     <figure className="product" data-testid="product">
-      <a href="/" className="product__image-wrapper">
+      <Link
+        to={`/produto/${routeName}`}
+        state={{ ...product }}
+        className="product__image-wrapper"
+      >
         <span className="product__discount-tag">
           {on_sale && `-${discount_percentage}`}
         </span>
@@ -52,7 +62,7 @@ const Product = ({ product }) => {
             {actual_price}
           </p>
         </figcaption>
-      </a>
+      </Link>
     </figure>
   );
 };

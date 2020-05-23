@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from '@reach/router';
 import logo from '../../assets/images/fashionista-logo.svg';
 import './Header.css';
 import useSVGIcon from '../../hooks/useSVGIcon';
@@ -13,16 +14,20 @@ const Header = () => {
   });
   const [WishListIcon] = useSVGIcon({ icon: 'wishlist' });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <header className="header" data-testid="header">
       <div className="container">
-        <a href="/">
+        <Link to="/">
           <img
             className="header__logo"
             src={logo}
             alt="Fashionista logo"
           />
-        </a>
+        </Link>
         <nav className="header__nav">
           <SearchIcon />
           <WishListIcon />

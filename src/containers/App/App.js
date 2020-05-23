@@ -1,7 +1,9 @@
 import mockData from '../../mockData/mockData';
 import React, { useState, useEffect } from 'react';
-import Header from '../Header/Header';
-import Catalog from '../Catalog/Catalog';
+import { Router } from '@reach/router';
+import Header from '../../containers/Header/Header';
+import Catalog from '../../containers/Catalog/Catalog';
+import Product from '../ProductPage/ProductPage';
 import './App.css';
 
 const App = () => {
@@ -14,7 +16,10 @@ const App = () => {
   return (
     <div data-testid="app">
       <Header />
-      <Catalog products={products} />
+      <Router>
+        <Catalog path="/" products={products} />
+        <Product path="produto/:name" />
+      </Router>
     </div>
   );
 };
