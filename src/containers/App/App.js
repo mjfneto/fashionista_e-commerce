@@ -1,4 +1,4 @@
-import mockData from '../../mockData';
+import mockData from '../../mockData/mockData';
 import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import Catalog from '../Catalog/Catalog';
