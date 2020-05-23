@@ -18,7 +18,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <figure className="product">
+    <figure className="product" data-testid="product">
       <a href="/" className="product__image-wrapper">
         <span className="product__discount-tag">
           {on_sale && `-${discount_percentage}`}
