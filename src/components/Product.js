@@ -9,6 +9,7 @@ const Product = ({ product }) => {
     name,
     image,
     on_sale,
+    regular_price,
     actual_price,
     discount_percentage,
   } = product;
@@ -32,7 +33,24 @@ const Product = ({ product }) => {
         />
         <figcaption className="product__details">
           <h3 className="product__name">{name}</h3>
-          <p>{actual_price}</p>
+          <p
+            className={`product__pricing${
+              on_sale ? '--green' : ''
+            }`}
+          >
+            {on_sale && (
+              <>
+                <span className="product__detail--regular">
+                  {regular_price}
+                </span>
+                <span className="product__detail--relational">
+                  {' '}
+                  ➔{' '}
+                </span>
+              </>
+            )}
+            {actual_price}
+          </p>
         </figcaption>
       </a>
     </figure>

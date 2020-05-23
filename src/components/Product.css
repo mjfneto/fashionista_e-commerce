@@ -31,6 +31,24 @@
   font-size: 1.5rem;
 }
 
+.product__pricing {
+  color: inherit;
+}
+
+.product__pricing--green {
+  font-weight: bold;
+  color: limegreen;
+}
+
+.product__detail--regular {
+  text-decoration: line-through;
+  color: #a7a7a7;
+}
+
+.product__detail--relational {
+  color: limegreen;
+}
+
 @media screen and (min-width: 500px) {
   .product {
     flex: 0 1 50%;
