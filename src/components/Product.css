@@ -1,0 +1,51 @@
+.product {
+  flex: 0 1 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.product__image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.product__discount-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0.25rem;
+  font-size: 1.8rem;
+  color: #fff;
+  background: #333;
+}
+
+.product__image {
+  max-width: 100%;
+}
+
+.product__details {
+  font-size: 1.4rem;
+}
+
+.product__name {
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 500px) {
+  .product {
+    flex: 0 1 50%;
+    padding: 0 0.5rem 0 0;
+  }
+}
+
+@media screen and (min-width: 812px) {
+  .product {
+    flex: 0 1 33.3333%;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .product {
+    flex: 0 1 25%;
+  }
+}

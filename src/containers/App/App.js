@@ -1,7 +1,7 @@
-import mockData from './mockData';
+import mockData from '../../mockData';
 import React, { useState, useEffect } from 'react';
-import Header from './containers/Header/Header';
-import Catalog from './containers/Catalog/Catalog';
+import Header from '../Header/Header';
+import Catalog from '../Catalog/Catalog';
 import './App.css';
 
 const App = () => {
