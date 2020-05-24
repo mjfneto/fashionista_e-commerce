@@ -6,12 +6,12 @@ import mockData from '../../mockData/mockData';
 import Catalog from './Catalog';
 
 describe('Catalog container', () => {
-  test('renders produtcs', async () => {
-    const { findAllByTestId } = render(
+  test('renders multiple instances of the Product component', () => {
+    const { queryAllByTestId } = render(
       <Catalog products={mockData} />
     );
-    const products = await findAllByTestId('product');
+    const products = queryAllByTestId('product');
 
-    expect(products).toHaveLength();
+    expect(products.length).toBeTruthy();
   });
 });
