@@ -25,12 +25,13 @@ const Product = ({ product }) => {
     .replace(/ /g, '-');
 
   return (
-    <figure className="product" data-testid="product">
-      <Link
-        to={`/produto/${routeName}`}
-        state={{ ...product }}
-        className="product__image-wrapper"
-      >
+    <Link
+      to={`/produto/${routeName}`}
+      state={{ ...product }}
+      className="product"
+      data-testid="product"
+    >
+      <figure className="product__image-wrapper">
         <span className="product__discount-tag">
           {on_sale && `-${discount_percentage}`}
         </span>
@@ -62,8 +63,8 @@ const Product = ({ product }) => {
             {actual_price}
           </p>
         </figcaption>
-      </Link>
-    </figure>
+      </figure>
+    </Link>
   );
 };
 

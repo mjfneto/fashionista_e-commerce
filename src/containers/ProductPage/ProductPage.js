@@ -22,7 +22,10 @@ const Product = ({ location }) => {
   };
 
   return (
-    <section className="container">
+    <section
+      className="container"
+      data-testid="product-page"
+    >
       <figure className="product-page">
         <img
           className="product-page__image"
