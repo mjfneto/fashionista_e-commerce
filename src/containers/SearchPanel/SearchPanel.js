@@ -2,7 +2,11 @@ import React from 'react';
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import './SearchPanel.css';
 
-const SearchPanel = ({ toggleNavSlider }) => {
+const SearchPanel = ({
+  results,
+  toggleNavSlider,
+  onSearchInput,
+}) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
 
   return (
@@ -20,11 +24,17 @@ const SearchPanel = ({ toggleNavSlider }) => {
       </nav>
       <div>
         <input
+          onChange={(e) => onSearchInput(e.target.value)}
           type="text"
           placeholder="Buscar por produto"
           className="search__input"
         ></input>
       </div>
+      <ul className="search__results">
+        {results.map(({ name }, idx) => {
+          return <li key={`result-${idx}`}>{name}</li>;
+        })}
+      </ul>
     </div>
   );
 };

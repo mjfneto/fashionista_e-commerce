@@ -1,4 +1,5 @@
 import mockData from '../../mockData/mockData';
+import escapeRegExp from 'escape-string-regexp';
 import React, { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
 import Header from '../../containers/Header/Header';
@@ -12,6 +13,7 @@ import './App.css';
 const App = () => {
   const [products, setProducts] = useState([]);
   const [navSlider, setNavSlider] = useState('');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     setProducts(mockData);
@@ -20,6 +22,25 @@ const App = () => {
   const toggleNavSlider = (slider) => {
     setNavSlider(slider ? slider : '');
   };
+
+  const handleSearchInput = (query) => {
+    setQuery(query);
+  };
+
+  const filterContacts = (showingProducts) => {
+    const match = new RegExp(escapeRegExp(query), 'i');
+
+    query &&
+      (showingProducts = showingProducts.filter(
+        ({ name }) => match.test(name)
+      ));
+
+    return showingProducts;
+  };
+
+  let showingProducts = [];
+  query &&
+    (showingProducts = filterContacts([...products]));
 
   return (
     <div data-testid="app">
@@ -34,7 +55,9 @@ const App = () => {
           <NavigationSlider>
             {navSlider == 'search' && (
               <SearchPanel
+                results={showingProducts}
                 toggleNavSlider={toggleNavSlider}
+                onSearchInput={handleSearchInput}
               />
             )}
           </NavigationSlider>
