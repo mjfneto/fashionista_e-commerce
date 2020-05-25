@@ -1,0 +1,20 @@
+#nav-slider {
+  position: fixed;
+  top: 0;
+  right: -80vw;
+  height: 100%;
+  width: 80vw;
+  z-index: 1;
+  transition: right 0.35s linear;
+  background: #f9f9f9;
+}
+
+#nav-slider.open {
+  right: 0;
+}
+
+@media screen and (min-width: 640px) {
+  #nav-slider {
+    width: 45vw;
+  }
+}

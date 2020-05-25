@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import logo from '../../assets/images/fashionista-logo.svg';
+import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import './Header.css';
-import useSVGIcon from '../../hooks/useSVGIcon';
 
-const Header = () => {
+const Header = ({ toggleNavSlider }) => {
   const [SearchIcon] = useSVGIcon({
     icon: 'search',
-    className: 'search',
+    handlers: { toggleNavSlider },
   });
   const [ShoppingBagIcon] = useSVGIcon({
     icon: 'shoppingBag',
@@ -25,9 +25,18 @@ const Header = () => {
           />
         </Link>
         <nav className="header__nav">
-          <SearchIcon />
-          <WishListIcon />
-          <ShoppingBagIcon />
+          <button
+            onClick={() => toggleNavSlider('search')}
+            className="header__button"
+          >
+            <SearchIcon />
+          </button>
+          <button className="header__button">
+            <WishListIcon />
+          </button>
+          <button className="header__button">
+            <ShoppingBagIcon />
+          </button>
         </nav>
       </div>
     </header>
