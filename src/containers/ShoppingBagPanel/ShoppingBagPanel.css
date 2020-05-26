@@ -1,0 +1,43 @@
+.bag-panel {
+  display: flex;
+  flex-flow: column;
+  padding: 0 2rem;
+}
+
+.bag-panel__nav {
+  display: flex;
+  align-items: center;
+}
+
+.bag-panel__button {
+  box-sizing: content-box;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: transparent;
+  border-radius: 50%;
+}
+
+.bag-panel__title {
+  flex-grow: 2;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 4.6rem;
+}
+
+.bag-panel__items {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 60rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+.bag-panel__item {
+  display: flex;
+  justify-content: center;
+}

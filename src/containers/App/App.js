@@ -8,6 +8,8 @@ import ProductPage from '../ProductPage/ProductPage';
 import Overlay from '../../components/Overlay/Overlay';
 import NavigationSlider from '../NavigationSlider/NavigationSlider';
 import SearchPanel from '../SearchPanel/SearchPanel';
+import ShoppingBagPanel from '../ShoppingBagPanel/ShoppingBagPanel';
+
 import './App.css';
 
 const App = () => {
@@ -58,6 +60,9 @@ const App = () => {
                 toggleNavSlider={toggleNavSlider}
                 onSearchInput={handleSearchInput}
               />
+            )}
+            {navSlider == 'shoppingBag' && (
+              <ShoppingBagPanel toggleNavSlider={toggleNavSlider} />
             )}
           </NavigationSlider>
         </>

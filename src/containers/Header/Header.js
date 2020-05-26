@@ -18,11 +18,7 @@ const Header = ({ toggleNavSlider }) => {
     <header className="header" data-testid="header">
       <div className="container">
         <Link to="/" data-testid="home-link">
-          <img
-            className="header__logo"
-            src={logo}
-            alt="Fashionista logo"
-          />
+          <img className="header__logo" src={logo} alt="Fashionista logo" />
         </Link>
         <nav className="header__nav">
           <button
@@ -34,7 +30,10 @@ const Header = ({ toggleNavSlider }) => {
           <button className="header__button">
             <WishListIcon />
           </button>
-          <button className="header__button">
+          <button
+            onClick={() => toggleNavSlider('shoppingBag')}
+            className="header__button"
+          >
             <ShoppingBagIcon />
           </button>
         </nav>

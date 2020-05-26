@@ -7,26 +7,29 @@ const SearchPanel = ({ results, toggleNavSlider, onSearchInput }) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
 
   return (
-    <div className="search__controls">
-      <nav className="search__nav">
-        <button onClick={() => toggleNavSlider()} className="search__button">
+    <div className="search-panel">
+      <nav className="search-panel__nav">
+        <button
+          onClick={() => toggleNavSlider()}
+          className="search-panel__button"
+        >
           <ReturnIcon />
         </button>
-        <h2 className="search__title">Buscar por produto</h2>
+        <h2 className="search-panel__title">Buscar por produto</h2>
       </nav>
       <div>
         <input
           onChange={(e) => onSearchInput(e.target.value)}
           type="text"
           placeholder="Buscar por produto"
-          className="search__input"
+          className="search-panel__input"
         ></input>
       </div>
-      <ul className="search__results">
+      <ul className="search-panel__results">
         {results.length ? (
           results.map((product, idx) => {
             return (
-              <li className="search__item" key={`result-${idx}`}>
+              <li className="search-panel__item" key={`result-${idx}`}>
                 <SearchResult
                   product={product}
                   toggleNavSlider={toggleNavSlider}
@@ -35,7 +38,7 @@ const SearchPanel = ({ results, toggleNavSlider, onSearchInput }) => {
             );
           })
         ) : (
-          <li className="search__no-results">
+          <li className="search-panel__no-results">
             <p>Nenhum item encontrado :\</p>
           </li>
         )}

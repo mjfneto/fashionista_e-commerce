@@ -1,0 +1,70 @@
+.bag-item {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem 0;
+}
+
+.bag-item .image-wrapper {
+  flex-basis: 25%;
+}
+
+.bag-item__image {
+  max-width: 100%;
+}
+
+.bag-item__details {
+  flex-basis: 45%;
+  margin-left: 5%;
+}
+
+.bag-item__controls {
+  flex-basis: 10%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.bag-item__title {
+  font-size: 1.6rem;
+}
+
+.bag-item__size {
+  font-size: 1.2rem;
+  color: #a7a7a7;
+}
+
+.bag-item__price {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.bag-item__installments {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #a7a7a7;
+}
+
+.bag-item__quantity {
+  font-size: 1.6rem;
+}
+
+.bag-item__button {
+  box-sizing: content-box;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: transparent;
+  border-radius: 50%;
+}
+
+.bag-item__button:hover {
+  background: #efefef;
+}
+
+.bag-item__button--remove {
+  stroke: #de6274;
+  fill: #de6274;
+}
