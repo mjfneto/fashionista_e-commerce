@@ -19,10 +19,7 @@ const Product = ({ product }) => {
     setPlaceholder(true);
   };
 
-  const routeName = name
-    .trim()
-    .toLowerCase()
-    .replace(/ /g, '-');
+  const routeName = name.trim().toLowerCase().replace(/ /g, '-');
 
   return (
     <Link
@@ -44,20 +41,13 @@ const Product = ({ product }) => {
         />
         <figcaption className="product__details">
           <h3 className="product__name">{name}</h3>
-          <p
-            className={`product__pricing${
-              on_sale ? '--green' : ''
-            }`}
-          >
+          <p className={`product__pricing${on_sale ? '--green' : ''}`}>
             {on_sale && (
               <>
                 <span className="product__detail--regular">
                   {regular_price}
                 </span>
-                <span className="product__detail--relational">
-                  {' '}
-                  ➔{' '}
-                </span>
+                <span className="product__detail--relational"> ➔ </span>
               </>
             )}
             {actual_price}

@@ -41,6 +41,31 @@
   width: 100%;
 }
 
+.search__results {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 50rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+.search__no-results {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #a7a7a7;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.search__item {
+  display: flex;
+}
+
 @media screen and (min-width: 812px) {
   .search__button {
     width: 3rem;

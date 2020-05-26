@@ -1,0 +1,36 @@
+.search-result {
+  margin: 1rem 0;
+}
+
+.search-result__content {
+  display: flex;
+  margin: 0;
+}
+
+.search-result .image-wrapper {
+  flex-basis: 25%;
+}
+
+.search-result__image {
+  max-width: 100%;
+}
+
+.search-result__details {
+  flex-basis: 70%;
+  margin-left: 5%;
+}
+
+.search-result__title {
+  font-size: 1.6rem;
+}
+
+.search-result__price {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.search-result__installments {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #a7a7a7;
+}
