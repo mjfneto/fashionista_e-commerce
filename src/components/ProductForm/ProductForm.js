@@ -1,17 +1,29 @@
 import React from 'react';
 import './ProductForm.css';
 
-const ProductForm = ({ sizes }) => {
+const ProductForm = ({ product, onShoppingBagAction }) => {
+  const { sizes } = product;
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const inputs = e.target.querySelectorAll('input[type="radio"]');
+
+    for (let input of inputs) {
+      input.checked &&
+        onShoppingBagAction({
+          type: 'ADD',
+          item: { ...product, sizeChoice: input.value },
+        });
+    }
+  };
+
   return (
-    <form className="product-form">
+    <form onSubmit={handleFormSubmit} className="product-form">
       <div className="product-form__radio-group">
         {sizes
           .filter(({ available }) => available)
           .map(({ size }, idx) => (
-            <div
-              key={`size-${size}`}
-              className="product-form__radio"
-            >
+            <div key={`size-${size}`} className="product-form__radio">
               <input
                 id={`size-${idx}`}
                 type="radio"

@@ -4,14 +4,35 @@ import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 
 import './ShoppingBagItem.css';
 
-const ShoppingBagItem = () => {
+const ShoppingBagItem = ({ bagItem, onShoppingBagAction }) => {
   const [placeholder, setPlaceholder] = useState(false);
   const [AddIcon] = useSVGIcon({ icon: 'add' });
   const [SubtractIcon] = useSVGIcon({ icon: 'subtract' });
   const [RemoveIcon] = useSVGIcon({ icon: 'remove' });
 
+  const {
+    name,
+    image,
+    sizeChoice,
+    actual_price,
+    installments,
+    quantity,
+  } = bagItem;
+
   const handleImageLoadError = () => {
     setPlaceholder(true);
+  };
+
+  const handleAdd = () => {
+    onShoppingBagAction({ type: 'ADD', item: bagItem });
+  };
+
+  const handleSubtract = () => {
+    onShoppingBagAction({ type: 'SUBTRACT', item: bagItem });
+  };
+
+  const handleRemove = () => {
+    onShoppingBagAction({ type: 'REMOVE', item: bagItem });
   };
 
   return (
@@ -20,27 +41,30 @@ const ShoppingBagItem = () => {
         <img
           onError={handleImageLoadError}
           className="bag-item__image"
-          src={!placeholder && fallbackPlaceholder}
+          src={!placeholder ? image : fallbackPlaceholder}
           alt="name"
         />
       </div>
       <figcaption className="bag-item__details">
-        <h3 className="bag-item__title">name</h3>
-        <p className="bag-item__size">Size</p>
-        <p className="bag-item__price">Price</p>
-        <p className="bag-item__installments">Installments</p>
+        <h3 className="bag-item__title">{name}</h3>
+        <p className="bag-item__size">{sizeChoice}</p>
+        <p className="bag-item__price">{actual_price}</p>
+        <p className="bag-item__installments">{installments}</p>
         <p className="bag-item__quantity">
-          Quantity: <output>{'6'}</output>
+          Quantity: <output>{quantity}</output>
         </p>
       </figcaption>
       <div className="bag-item__controls">
-        <button className="bag-item__button">
+        <button onClick={handleAdd} className="bag-item__button">
           <AddIcon />
         </button>
-        <button className="bag-item__button">
+        <button onClick={handleSubtract} className="bag-item__button">
           <SubtractIcon />
         </button>
-        <button className="bag-item__button bag-item__button--remove">
+        <button
+          onClick={handleRemove}
+          className="bag-item__button bag-item__button--remove"
+        >
           <RemoveIcon />
         </button>
       </div>

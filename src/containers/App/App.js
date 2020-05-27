@@ -13,6 +13,7 @@ import ShoppingBagPanel from '../ShoppingBagPanel/ShoppingBagPanel';
 import './App.css';
 
 const App = () => {
+  const [shoppingBag, setShoppingBag] = useState([]);
   const [products, setProducts] = useState([]);
   const [showingProducts, setShowingProducts] = useState([]);
   const [navSlider, setNavSlider] = useState('');
@@ -37,6 +38,73 @@ const App = () => {
     setShowingProducts(query ? filterContacts([...products]) : []);
   };
 
+  const handleShoppingBagAction = (action) => {
+    if (action.type === 'ADD') {
+      const currentItem = shoppingBag.find(({ name, sizeChoice }) => {
+        return (
+          name === action.item.name && sizeChoice === action.item.sizeChoice
+        );
+      });
+
+      if (!currentItem) {
+        setShoppingBag([...shoppingBag, { quantity: 1, ...action.item }]);
+        return;
+      }
+
+      setShoppingBag(
+        shoppingBag.map((item) => {
+          if (
+            item.name === action.item.name &&
+            item.sizeChoice === action.item.sizeChoice
+          )
+            return { ...item, quantity: item.quantity + 1 };
+          return item;
+        })
+      );
+    }
+
+    if (action.type === 'SUBTRACT') {
+      const currentItem = shoppingBag.find(({ name, sizeChoice }) => {
+        return (
+          name === action.item.name && sizeChoice === action.item.sizeChoice
+        );
+      });
+
+      if (currentItem.quantity === 1) {
+        setShoppingBag(
+          shoppingBag.filter((item) => {
+            return (
+              item.name !== action.item.name ||
+              item.sizeChoice !== action.item.sizeChoice
+            );
+          })
+        );
+        return;
+      }
+
+      setShoppingBag(
+        shoppingBag.map((item) => {
+          if (
+            item.name === action.item.name &&
+            item.sizeChoice === action.item.sizeChoice
+          )
+            return { ...item, quantity: item.quantity - 1 };
+          return item;
+        })
+      );
+    }
+
+    if (action.type === 'REMOVE') {
+      setShoppingBag(
+        shoppingBag.filter(
+          (item) =>
+            item.name !== action.item.name ||
+            item.sizeChoice !== action.item.sizeChoice
+        )
+      );
+    }
+  };
+
   const filterContacts = (showingProducts) => {
     const match = new RegExp(escapeRegExp(query), 'i');
 
@@ -48,7 +116,10 @@ const App = () => {
       <Header toggleNavSlider={toggleNavSlider} />
       <Router>
         <Catalog path="/" products={products} />
-        <ProductPage path="produto/:name" />
+        <ProductPage
+          path="produto/:name"
+          onShoppingBagAction={handleShoppingBagAction}
+        />
       </Router>
       {navSlider && (
         <>
@@ -62,7 +133,11 @@ const App = () => {
               />
             )}
             {navSlider == 'shoppingBag' && (
-              <ShoppingBagPanel toggleNavSlider={toggleNavSlider} />
+              <ShoppingBagPanel
+                shoppingBag={shoppingBag}
+                toggleNavSlider={toggleNavSlider}
+                onShoppingBagAction={handleShoppingBagAction}
+              />
             )}
           </NavigationSlider>
         </>
