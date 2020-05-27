@@ -1,9 +1,9 @@
 #nav-slider {
   position: fixed;
   top: 0;
-  right: -80vw;
+  right: -100vw;
   height: 100%;
-  width: 80vw;
+  width: 100vw;
   z-index: 1;
   transition: right 0.35s linear;
   background: #f9f9f9;
@@ -11,6 +11,11 @@
 
 #nav-slider.open {
   right: 0;
+}
+
+.portal-container,
+.slider {
+  height: 100%;
 }
 
 @media screen and (min-width: 1020px) {

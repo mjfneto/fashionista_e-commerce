@@ -2,15 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import './NavigationSlider.css';
 
-const navigationSliderRoot = document.getElementById(
-  'nav-slider'
-);
+const navigationSliderRoot = document.getElementById('nav-slider');
 
 const NavigationSlider = ({ children }) => {
   const elRef = useRef(null);
 
   if (!elRef.current) {
     elRef.current = document.createElement('div');
+    elRef.current.classList.add('portal-container');
   }
 
   useEffect(() => {
