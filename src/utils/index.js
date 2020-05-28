@@ -1,7 +1,11 @@
 export const twoDigits = roundToDigits(2);
 
 export function numStringToNum(val) {
-  if (typeof val !== 'string' || val.trim() === '' || val.search(/\d/g) === -1) {
+  if (
+    typeof val !== 'string' ||
+    val.trim() === '' ||
+    val.search(/\d/g) === -1
+  ) {
     throw new TypeError('val is not a string');
   }
 

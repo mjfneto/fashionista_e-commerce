@@ -35,8 +35,10 @@ const ShoppingBagPanel = ({
             })
           : null}
       </ul>
-      <div>
-        <p>Subtotal: {shoppingBag.subtotal}</p>
+      <div className="bag-panel__subtotal-wrapper">
+        <p className="bag-panel__subtotal">
+          Subtotal - R$ {shoppingBag.subtotal.toFixed(2).replace('.', ',')}
+        </p>
       </div>
     </div>
   );

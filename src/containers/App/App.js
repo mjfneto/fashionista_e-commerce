@@ -61,11 +61,13 @@ const App = () => {
             total + quantity * numStringToNum(actual_price),
           0
         );
+        const subtotal = twoDigits(newSubTotal);
+        const bagQuantity = getBagQuantity(items);
 
         setShoppingBag({
           items,
-          subtotal: twoDigits(newSubTotal),
-          bagQuantity: getBagQuantity(items),
+          subtotal,
+          bagQuantity,
         });
         return;
       }
@@ -81,11 +83,13 @@ const App = () => {
         });
         const newSubTotal =
           shoppingBag.subtotal + numStringToNum(action.item.actual_price);
+        const subtotal = twoDigits(newSubTotal);
+        const bagQuantity = getBagQuantity(items);
 
         setShoppingBag({
           items,
-          subtotal: twoDigits(newSubTotal),
-          bagQuantity: getBagQuantity(items),
+          subtotal,
+          bagQuantity,
         });
       }
     }
@@ -103,11 +107,13 @@ const App = () => {
             total + quantity * numStringToNum(actual_price),
           0
         );
+        const subtotal = twoDigits(newSubtotal);
+        const bagQuantity = getBagQuantity(items);
 
         setShoppingBag({
           items,
-          subtotal: twoDigits(newSubtotal),
-          bagQuantity: getBagQuantity(items),
+          subtotal,
+          bagQuantity,
         });
         return;
       }
@@ -123,11 +129,13 @@ const App = () => {
         });
         const newSubTotal =
           shoppingBag.subtotal - numStringToNum(action.item.actual_price);
+        const subtotal = twoDigits(newSubTotal);
+        const bagQuantity = getBagQuantity(items);
 
         setShoppingBag({
           items,
-          subtotal: twoDigits(newSubTotal),
-          bagQuantity: getBagQuantity(items),
+          subtotal,
+          bagQuantity,
         });
       }
     }
@@ -143,11 +151,13 @@ const App = () => {
           total + quantity * numStringToNum(actual_price),
         0
       );
+      const subtotal = twoDigits(newSubTotal);
+      const bagQuantity = getBagQuantity(items);
 
       setShoppingBag({
         items,
-        subtotal: twoDigits(newSubTotal),
-        bagQuantity: getBagQuantity(items),
+        subtotal,
+        bagQuantity,
       });
     }
   };
