@@ -22,18 +22,29 @@ const ShoppingBagPanel = ({
         </h2>
       </nav>
       <ul className="bag-panel__items">
-        {shoppingBag.items.length
-          ? shoppingBag.items.map((bagItem, idx) => {
-              return (
-                <li className="bag-panel__item" key={`item-${idx}`}>
-                  <ShoppingBagItem
-                    bagItem={bagItem}
-                    onShoppingBagAction={onShoppingBagAction}
-                  />
-                </li>
-              );
-            })
-          : null}
+        {shoppingBag.items.length ? (
+          shoppingBag.items.map((bagItem, idx) => {
+            return (
+              <li className="bag-panel__item" key={`item-${idx}`}>
+                <ShoppingBagItem
+                  bagItem={bagItem}
+                  onShoppingBagAction={onShoppingBagAction}
+                />
+              </li>
+            );
+          })
+        ) : (
+          <li className="bag-panel__no-items" id="no-items">
+            <span
+              className="bag-panel__bag-emoji"
+              role="img"
+              aria-label="Duas sacolas de compras coloridas"
+            >
+              🛍️
+            </span>
+            <p>Sua sacola está vazia!</p>
+          </li>
+        )}
       </ul>
       <div className="bag-panel__subtotal-wrapper">
         <p className="bag-panel__subtotal">

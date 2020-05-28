@@ -38,6 +38,21 @@
   list-style: none;
 }
 
+.bag-panel__no-items {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #a7a7a7;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.bag-panel__bag-emoji {
+  font-size: 40px;
+}
+
 .bag-panel__item {
   display: flex;
   justify-content: center;
