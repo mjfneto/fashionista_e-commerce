@@ -39,7 +39,7 @@ const SearchPanel = ({ results, toggleNavSlider, onSearchInput }) => {
           })
         ) : (
           <li className="search-panel__no-results">
-            <p>Nenhum item encontrado :\</p>
+            <p>Nenhum item encontrado</p>
           </li>
         )}
       </ul>
