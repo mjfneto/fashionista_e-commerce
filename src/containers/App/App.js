@@ -1,7 +1,9 @@
 import mockData from '../../mockData/mockData';
+
 import escapeRegExp from 'escape-string-regexp';
 import React, { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
+
 import Header from '../../containers/Header/Header';
 import Catalog from '../../containers/Catalog/Catalog';
 import ProductPage from '../ProductPage/ProductPage';
@@ -10,10 +12,11 @@ import NavigationSlider from '../NavigationSlider/NavigationSlider';
 import SearchPanel from '../SearchPanel/SearchPanel';
 import ShoppingBagPanel from '../ShoppingBagPanel/ShoppingBagPanel';
 
+import { numStringToNum, twoDigits } from '../../utils';
 import './App.css';
 
 const App = () => {
-  const [shoppingBag, setShoppingBag] = useState([]);
+  const [shoppingBag, setShoppingBag] = useState({ items: [], subtotal: 0 });
   const [products, setProducts] = useState([]);
   const [showingProducts, setShowingProducts] = useState([]);
   const [navSlider, setNavSlider] = useState('');
@@ -39,69 +42,101 @@ const App = () => {
   };
 
   const handleShoppingBagAction = (action) => {
-    if (action.type === 'ADD') {
-      const currentItem = shoppingBag.find(({ name, sizeChoice }) => {
-        return (
-          name === action.item.name && sizeChoice === action.item.sizeChoice
-        );
-      });
+    const currentItem = shoppingBag.items.find(({ name, sizeChoice }) => {
+      return name === action.item.name && sizeChoice === action.item.sizeChoice;
+    });
 
+    if (action.type === 'ADD') {
       if (!currentItem) {
-        setShoppingBag([...shoppingBag, { quantity: 1, ...action.item }]);
+        const items = [...shoppingBag.items, { quantity: 1, ...action.item }];
+        const newSubTotal = items.reduce(
+          (total, { actual_price, quantity }) =>
+            total + quantity * numStringToNum(actual_price),
+          0
+        );
+
+        setShoppingBag({
+          items,
+          subtotal: twoDigits(newSubTotal),
+        });
         return;
       }
 
-      setShoppingBag(
-        shoppingBag.map((item) => {
+      if (currentItem) {
+        const items = shoppingBag.items.map((item) => {
           if (
             item.name === action.item.name &&
             item.sizeChoice === action.item.sizeChoice
           )
             return { ...item, quantity: item.quantity + 1 };
           return item;
-        })
-      );
+        });
+        const newSubTotal =
+          shoppingBag.subtotal + numStringToNum(action.item.actual_price);
+
+        setShoppingBag({
+          items,
+          subtotal: twoDigits(newSubTotal),
+        });
+      }
     }
 
     if (action.type === 'SUBTRACT') {
-      const currentItem = shoppingBag.find(({ name, sizeChoice }) => {
-        return (
-          name === action.item.name && sizeChoice === action.item.sizeChoice
-        );
-      });
-
       if (currentItem.quantity === 1) {
-        setShoppingBag(
-          shoppingBag.filter((item) => {
-            return (
-              item.name !== action.item.name ||
-              item.sizeChoice !== action.item.sizeChoice
-            );
-          })
+        const items = shoppingBag.items.filter((item) => {
+          return (
+            item.name !== action.item.name ||
+            item.sizeChoice !== action.item.sizeChoice
+          );
+        });
+        const newSubtotal = items.reduce(
+          (total, { actual_price, quantity }) =>
+            total + quantity * numStringToNum(actual_price),
+          0
         );
+
+        setShoppingBag({
+          items,
+          subtotal: twoDigits(newSubtotal),
+        });
         return;
       }
 
-      setShoppingBag(
-        shoppingBag.map((item) => {
+      if (currentItem.quantity > 1) {
+        const items = shoppingBag.items.map((item) => {
           if (
             item.name === action.item.name &&
             item.sizeChoice === action.item.sizeChoice
           )
             return { ...item, quantity: item.quantity - 1 };
           return item;
-        })
-      );
+        });
+        const newSubTotal =
+          shoppingBag.subtotal - numStringToNum(action.item.actual_price);
+
+        setShoppingBag({
+          items,
+          subtotal: twoDigits(newSubTotal),
+        });
+      }
     }
 
     if (action.type === 'REMOVE') {
-      setShoppingBag(
-        shoppingBag.filter(
-          (item) =>
-            item.name !== action.item.name ||
-            item.sizeChoice !== action.item.sizeChoice
-        )
+      const items = shoppingBag.items.filter(
+        (item) =>
+          item.name !== action.item.name ||
+          item.sizeChoice !== action.item.sizeChoice
       );
+      const newSubTotal = items.reduce(
+        (total, { actual_price, quantity }) =>
+          total + quantity * numStringToNum(actual_price),
+        0
+      );
+
+      setShoppingBag({
+        items,
+        subtotal: twoDigits(newSubTotal),
+      });
     }
   };
 
