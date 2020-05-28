@@ -47,11 +47,11 @@ const ShoppingBagItem = ({ bagItem, onShoppingBagAction }) => {
       </div>
       <figcaption className="bag-item__details">
         <h3 className="bag-item__title">{name}</h3>
-        <p className="bag-item__size">{sizeChoice}</p>
+        <p className="bag-item__size">Tamanho: {sizeChoice}</p>
         <p className="bag-item__price">{actual_price}</p>
         <p className="bag-item__installments">{installments}</p>
         <p className="bag-item__quantity">
-          Quantity: <output>{quantity}</output>
+          Quantidade: <output>{quantity}</output>
         </p>
       </figcaption>
       <div className="bag-item__controls">
