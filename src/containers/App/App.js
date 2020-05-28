@@ -16,7 +16,11 @@ import { numStringToNum, twoDigits } from '../../utils';
 import './App.css';
 
 const App = () => {
-  const [shoppingBag, setShoppingBag] = useState({ items: [], subtotal: 0 });
+  const [shoppingBag, setShoppingBag] = useState({
+    items: [],
+    bagQuantity: 0,
+    subtotal: 0,
+  });
   const [products, setProducts] = useState([]);
   const [showingProducts, setShowingProducts] = useState([]);
   const [navSlider, setNavSlider] = useState('');
@@ -46,6 +50,9 @@ const App = () => {
       return name === action.item.name && sizeChoice === action.item.sizeChoice;
     });
 
+    const getBagQuantity = (items) =>
+      items.reduce((total, { quantity }) => total + quantity, 0);
+
     if (action.type === 'ADD') {
       if (!currentItem) {
         const items = [...shoppingBag.items, { quantity: 1, ...action.item }];
@@ -58,6 +65,7 @@ const App = () => {
         setShoppingBag({
           items,
           subtotal: twoDigits(newSubTotal),
+          bagQuantity: getBagQuantity(items),
         });
         return;
       }
@@ -77,6 +85,7 @@ const App = () => {
         setShoppingBag({
           items,
           subtotal: twoDigits(newSubTotal),
+          bagQuantity: getBagQuantity(items),
         });
       }
     }
@@ -98,6 +107,7 @@ const App = () => {
         setShoppingBag({
           items,
           subtotal: twoDigits(newSubtotal),
+          bagQuantity: getBagQuantity(items),
         });
         return;
       }
@@ -117,6 +127,7 @@ const App = () => {
         setShoppingBag({
           items,
           subtotal: twoDigits(newSubTotal),
+          bagQuantity: getBagQuantity(items),
         });
       }
     }
@@ -136,6 +147,7 @@ const App = () => {
       setShoppingBag({
         items,
         subtotal: twoDigits(newSubTotal),
+        bagQuantity: getBagQuantity(items),
       });
     }
   };

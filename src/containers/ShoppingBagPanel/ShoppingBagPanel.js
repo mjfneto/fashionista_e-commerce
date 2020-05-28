@@ -4,7 +4,11 @@ import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 
 import './ShoppingBagPanel.css';
 
-const ShoppingBagPanel = ({ shoppingBag, toggleNavSlider, onShoppingBagAction }) => {
+const ShoppingBagPanel = ({
+  shoppingBag,
+  toggleNavSlider,
+  onShoppingBagAction,
+}) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
 
   return (
@@ -13,14 +17,19 @@ const ShoppingBagPanel = ({ shoppingBag, toggleNavSlider, onShoppingBagAction })
         <button onClick={() => toggleNavSlider()} className="bag-panel__button">
           <ReturnIcon />
         </button>
-        <h2 className="bag-panel__title">Itens {`(${shoppingBag.items.length})`}</h2>
+        <h2 className="bag-panel__title">
+          Itens {`(${shoppingBag.bagQuantity})`}
+        </h2>
       </nav>
       <ul className="bag-panel__items">
         {shoppingBag.items.length
           ? shoppingBag.items.map((bagItem, idx) => {
               return (
                 <li className="bag-panel__item" key={`item-${idx}`}>
-                  <ShoppingBagItem bagItem={bagItem} onShoppingBagAction={onShoppingBagAction} />
+                  <ShoppingBagItem
+                    bagItem={bagItem}
+                    onShoppingBagAction={onShoppingBagAction}
+                  />
                 </li>
               );
             })
