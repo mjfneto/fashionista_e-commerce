@@ -29,10 +29,11 @@ describe('toDigits', () => {
     expect(() => roundToDigits(2)(-0)).toThrowError('y is not a number');
   });
 
-  it('expects y characters after the decimal dot as output', () => {
-    expect(roundToDigits(2)(2.72222222).split('.')[1]).toHaveLength(2);
-    expect(roundToDigits(5)(2.72222222).split('.')[1]).toHaveLength(5);
-    expect(roundToDigits(10)(2.7002).split('.')[1]).toHaveLength(10);
-    expect(roundToDigits(0)(2.7002).split('.')[1]).toEqual(undefined);
+  it('expects +/- integer/decimal as output', () => {
+    expect(roundToDigits(2)(2.72222222)).toEqual(2.72);
+    expect(roundToDigits(5)(2.72222222)).toEqual(2.72222);
+    expect(roundToDigits(10)(2.7002)).toEqual(2.7002);
+    expect(roundToDigits(0)(2.7002)).toEqual(3);
+    expect(roundToDigits(3)(-2.87)).toEqual(-2.87);
   });
 });
