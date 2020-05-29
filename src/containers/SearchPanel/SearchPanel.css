@@ -47,6 +47,7 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
+  flex: 1;
   height: 50rem;
   margin-top: 2rem;
   padding: 0.5rem;

@@ -11,9 +11,8 @@ html {
 body {
   width: 100%;
   background: #f9f9f9;
-  font-family: 'Noto Sans SC', 'Trebuchet MS',
-    'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
-    Arial, sans-serif;
+  font-family: 'Noto Sans SC', 'Trebuchet MS', 'Lucida Sans Unicode',
+    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 a,

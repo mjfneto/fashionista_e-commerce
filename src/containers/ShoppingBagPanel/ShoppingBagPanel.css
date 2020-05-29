@@ -33,6 +33,7 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
+  flex: 1;
   height: 60rem;
   margin-top: 2rem;
   padding: 0.5rem;
@@ -60,7 +61,7 @@
 }
 
 .bag-panel__subtotal-wrapper {
-  flex-grow: 1;
+  flex-basis: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
