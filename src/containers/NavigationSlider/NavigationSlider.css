@@ -1,16 +1,16 @@
 #nav-slider {
   position: fixed;
   top: 0;
-  right: -100vw;
+  right: 0;
   height: 100%;
-  width: 100vw;
+  width: 0;
   z-index: 1;
-  transition: right 0.35s linear;
+  transition: width 0.35s ease-in-out;
   background: #f9f9f9;
 }
 
 #nav-slider.open {
-  right: 0;
+  width: 100vw;
 }
 
 .portal-container,
