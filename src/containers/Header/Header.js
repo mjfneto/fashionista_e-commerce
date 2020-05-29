@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from '@reach/router';
 import logo from '../../assets/images/fashionista-logo.svg';
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import './Header.css';
 
 const Header = ({ toggleNavSlider, bagQuantity }) => {
+  const headerRef = useRef();
+
+  useEffect(() => {
+    window.addEventListener('scroll', onStickyHeader);
+
+    if (!headerRef.current) {
+      headerRef.current = document.querySelector('.header');
+    }
+
+    return () => {
+      window.removeEventListener('scroll', onStickyHeader);
+    };
+
+    // ***********
+
+    function onStickyHeader() {
+      let pageY = window.pageYOffset;
+      let headerTop = headerRef.current.offsetTop;
+      let sticky = headerRef.current.classList.contains('sticky');
+
+      if (pageY > headerTop && !sticky) {
+        headerRef.current.classList.add('sticky');
+      }
+
+      if (pageY === headerTop && sticky) {
+        headerRef.current.classList.remove('sticky');
+      }
+    }
+  }, []);
+
   const [SearchIcon] = useSVGIcon({
     icon: 'search',
     handlers: { toggleNavSlider },
