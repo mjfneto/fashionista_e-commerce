@@ -2,6 +2,26 @@
 SVG Icons - svgicons.sparkk.fr
 ----- */
 
+.svg-icon-wrapper {
+  box-sizing: content-box;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.svg-icon-counter {
+  position: absolute;
+  top: -0.85rem;
+  right: -1.25rem;
+  background: red;
+  padding: 0.35rem 0.25rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
 /* .svg-icon {
   width: 1em;
   height: 1em;
@@ -20,4 +40,27 @@ SVG Icons - svgicons.sparkk.fr
 
 .svg-icon--search {
   transform: rotateY(180deg);
+}
+
+@media screen and (min-width: 411px) {
+  .svg-icon-wrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .svg-icon-counter {
+    right: -1.85rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 812px) {
+  .svg-icon-wrapper {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .svg-icon-counter {
+    font-size: 1.6rem;
+  }
 }

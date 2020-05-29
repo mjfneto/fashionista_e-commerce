@@ -11,14 +11,15 @@
 }
 
 .search-panel__button {
-  box-sizing: content-box;
-  width: 2.5rem;
-  height: 2.5rem;
   padding: 1.5rem;
   cursor: pointer;
   background: transparent;
   border: transparent;
   border-radius: 50%;
+}
+
+.search-panel__button:hover {
+  background: #efefef;
 }
 
 .search-panel__title {
@@ -69,8 +70,6 @@
 
 @media screen and (min-width: 812px) {
   .search-panel__button {
-    width: 3rem;
-    height: 3rem;
     padding: 1.25rem;
   }
 }

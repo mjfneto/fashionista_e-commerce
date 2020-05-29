@@ -170,7 +170,10 @@ const App = () => {
 
   return (
     <div data-testid="app">
-      <Header toggleNavSlider={toggleNavSlider} />
+      <Header
+        toggleNavSlider={toggleNavSlider}
+        bagQuantity={shoppingBag.bagQuantity}
+      />
       <Router>
         <Catalog path="/" products={products} />
         <ProductPage

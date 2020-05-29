@@ -11,14 +11,15 @@
 }
 
 .bag-panel__button {
-  box-sizing: content-box;
-  width: 2.5rem;
-  height: 2.5rem;
   padding: 1.5rem;
   cursor: pointer;
   background: transparent;
   border: transparent;
   border-radius: 50%;
+}
+
+.bag-panel__button:hover {
+  background: #efefef;
 }
 
 .bag-panel__title {
