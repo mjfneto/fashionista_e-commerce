@@ -19,7 +19,7 @@
 }
 
 @media screen and (min-width: 1020px) {
-  #nav-slider {
+  #nav-slider.open {
     width: 45vw;
   }
 }
