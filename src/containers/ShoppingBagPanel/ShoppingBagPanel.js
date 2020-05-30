@@ -6,7 +6,7 @@ import './ShoppingBagPanel.css';
 
 const ShoppingBagPanel = ({
   shoppingBag,
-  toggleNavSlider,
+  closeSlider,
   onShoppingBagAction,
 }) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
@@ -14,7 +14,7 @@ const ShoppingBagPanel = ({
   return (
     <div className="bag-panel">
       <nav className="bag-panel__nav">
-        <button onClick={() => toggleNavSlider()} className="bag-panel__button">
+        <button onClick={closeSlider} className="bag-panel__button">
           <ReturnIcon />
         </button>
         <h2 className="bag-panel__title">

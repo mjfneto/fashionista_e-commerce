@@ -1,49 +1,35 @@
 import mockData from '../../mockData/mockData';
 
-import escapeRegExp from 'escape-string-regexp';
 import React, { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
 
-import Header from '../../containers/Header/Header';
-import Catalog from '../../containers/Catalog/Catalog';
+import Header from '../../containers/Header';
+import Catalog from '../../containers/Catalog';
 import ProductPage from '../ProductPage/ProductPage';
 import Overlay from '../../components/Overlay/Overlay';
 import NavigationSlider from '../NavigationSlider/NavigationSlider';
-import SearchPanel from '../SearchPanel/SearchPanel';
-import ShoppingBagPanel from '../ShoppingBagPanel/ShoppingBagPanel';
+import SearchPanel from '../SearchPanel';
+import ShoppingBagPanel from '../ShoppingBagPanel';
 
 import { numStringToNum, twoDigits } from '../../utils';
 import './App.css';
 
-const App = () => {
+const App = ({ slider, setProducts, clearQuery }) => {
   const [shoppingBag, setShoppingBag] = useState({
     items: [],
     bagQuantity: 0,
     subtotal: 0,
   });
-  const [products, setProducts] = useState([]);
-  const [showingProducts, setShowingProducts] = useState([]);
-  const [navSlider, setNavSlider] = useState('');
-  const [query, setQuery] = useState('');
 
   useEffect(() => {
     setProducts(mockData);
-  }, []);
+  }, [setProducts]);
 
   useEffect(() => {
-    if (!navSlider) {
-      setShowingProducts([]);
+    if (!slider) {
+      clearQuery();
     }
-  }, [navSlider]);
-
-  const toggleNavSlider = (slider) => {
-    setNavSlider(slider ? slider : '');
-  };
-
-  const handleSearchInput = (query) => {
-    setQuery(query);
-    setShowingProducts(query ? filterContacts([...products]) : []);
-  };
+  }, [slider, clearQuery]);
 
   const handleShoppingBagAction = (action) => {
     const currentItem = shoppingBag.items.find(({ name, sizeChoice }) => {
@@ -162,40 +148,24 @@ const App = () => {
     }
   };
 
-  const filterContacts = (showingProducts) => {
-    const match = new RegExp(escapeRegExp(query), 'i');
-
-    return showingProducts.filter(({ name }) => match.test(name));
-  };
-
   return (
     <div data-testid="app">
-      <Header
-        toggleNavSlider={toggleNavSlider}
-        bagQuantity={shoppingBag.bagQuantity}
-      />
+      <Header bagQuantity={shoppingBag.bagQuantity} />
       <Router>
-        <Catalog path="/" products={products} />
+        <Catalog path="/" />
         <ProductPage
           path="produto/:name"
           onShoppingBagAction={handleShoppingBagAction}
         />
       </Router>
-      {navSlider && (
+      {slider && (
         <>
           <Overlay />
           <NavigationSlider>
-            {navSlider == 'search' && (
-              <SearchPanel
-                results={showingProducts}
-                toggleNavSlider={toggleNavSlider}
-                onSearchInput={handleSearchInput}
-              />
-            )}
-            {navSlider == 'shoppingBag' && (
+            {slider == 'search' && <SearchPanel />}
+            {slider == 'shoppingBag' && (
               <ShoppingBagPanel
                 shoppingBag={shoppingBag}
-                toggleNavSlider={toggleNavSlider}
                 onShoppingBagAction={handleShoppingBagAction}
               />
             )}

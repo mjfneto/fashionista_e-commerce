@@ -4,7 +4,7 @@ import logo from '../../assets/images/fashionista-logo.svg';
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import './Header.css';
 
-const Header = ({ toggleNavSlider, bagQuantity }) => {
+const Header = ({ openSlider, bagQuantity }) => {
   const headerRef = useRef();
 
   useEffect(() => {
@@ -37,7 +37,6 @@ const Header = ({ toggleNavSlider, bagQuantity }) => {
 
   const [SearchIcon] = useSVGIcon({
     icon: 'search',
-    handlers: { toggleNavSlider },
   });
   const [WishListIcon] = useSVGIcon({ icon: 'wishlist' });
   const [ShoppingBagIcon] = useSVGIcon({
@@ -53,7 +52,7 @@ const Header = ({ toggleNavSlider, bagQuantity }) => {
         </Link>
         <nav className="header__nav">
           <button
-            onClick={() => toggleNavSlider('search')}
+            onClick={() => openSlider('search')}
             className="header__button"
           >
             <SearchIcon />
@@ -62,7 +61,7 @@ const Header = ({ toggleNavSlider, bagQuantity }) => {
             <WishListIcon />
           </button>
           <button
-            onClick={() => toggleNavSlider('shoppingBag')}
+            onClick={() => openSlider('shoppingBag')}
             className="header__button"
           >
             <ShoppingBagIcon bagQuantity={bagQuantity} />

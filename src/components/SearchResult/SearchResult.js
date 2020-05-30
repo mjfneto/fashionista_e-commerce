@@ -4,7 +4,7 @@ import { Link } from '@reach/router';
 import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 import './SearchResult.css';
 
-const SearchResult = ({ product, toggleNavSlider }) => {
+const SearchResult = ({ product, closeSlider }) => {
   const [placeholder, setPlaceholder] = useState();
   const { name, image, actual_price, installments } = product;
 
@@ -19,7 +19,7 @@ const SearchResult = ({ product, toggleNavSlider }) => {
       className="search-result"
       to={`/produto/${routeName}`}
       state={{ ...product }}
-      onClick={() => toggleNavSlider('')}
+      onClick={closeSlider}
     >
       <figure className="search-result__content">
         <div className="image-wrapper">
