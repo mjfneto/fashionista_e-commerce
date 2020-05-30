@@ -4,7 +4,7 @@ import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 
 import './ShoppingBagItem.css';
 
-const ShoppingBagItem = ({ bagItem, onShoppingBagAction }) => {
+const ShoppingBagItem = ({ bagItem, addItem, removeItem, removeAllItems }) => {
   const [placeholder, setPlaceholder] = useState(false);
   const [AddIcon] = useSVGIcon({ icon: 'add' });
   const [SubtractIcon] = useSVGIcon({ icon: 'subtract' });
@@ -24,15 +24,15 @@ const ShoppingBagItem = ({ bagItem, onShoppingBagAction }) => {
   };
 
   const handleAdd = () => {
-    onShoppingBagAction({ type: 'ADD', item: bagItem });
+    addItem(bagItem);
   };
 
   const handleSubtract = () => {
-    onShoppingBagAction({ type: 'SUBTRACT', item: bagItem });
+    removeItem(bagItem);
   };
 
   const handleRemove = () => {
-    onShoppingBagAction({ type: 'REMOVE', item: bagItem });
+    removeAllItems(bagItem);
   };
 
   return (

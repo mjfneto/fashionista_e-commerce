@@ -5,6 +5,6 @@ export const CLEAR_QUERY = 'CLEAR_QUERY';
 export const OPEN_SLIDER = 'OPEN_SLIDER';
 export const CLOSE_SLIDER = 'OPEN_SLIDER';
 
-export const ADD = 'ADD';
-export const REMOVE = 'REMOVE';
-export const REMOVE_ALL = 'REMOVE_ALL';
+export const ADD_ITEM = 'ADD_ITEM';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const REMOVE_ALL_ITEMS = 'REMOVE_ALL_ITEMS';

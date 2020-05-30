@@ -7,6 +7,12 @@ const HeaderContainer = (props) => {
   return <Header {...props} />;
 };
 
+const mapStateToProps = ({ shoppingBagReducer }) => {
+  return {
+    bagQuantity: shoppingBagReducer.bagQuantity,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     openSlider(slider) {
@@ -15,4 +21,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(HeaderContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

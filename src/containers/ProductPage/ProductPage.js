@@ -3,7 +3,7 @@ import ProductForm from '../../components/ProductForm/ProductForm';
 import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 import './ProductPage.css';
 
-const ProductPage = ({ location, onShoppingBagAction }) => {
+const ProductPage = ({ location, addItem }) => {
   const [placeholder, setPlaceholder] = useState(false);
   const { state } = location;
 
@@ -45,10 +45,7 @@ const ProductPage = ({ location, onShoppingBagAction }) => {
             </p>
             <p>{installments}</p>
             <h3>Escolha o tamanho:</h3>
-            <ProductForm
-              product={state}
-              onShoppingBagAction={onShoppingBagAction}
-            />
+            <ProductForm product={state} addItem={addItem} />
           </div>
         </figcaption>
       </figure>

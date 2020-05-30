@@ -7,7 +7,9 @@ import './ShoppingBagPanel.css';
 const ShoppingBagPanel = ({
   shoppingBag,
   closeSlider,
-  onShoppingBagAction,
+  addItem,
+  removeItem,
+  removeAllItems,
 }) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
 
@@ -28,7 +30,9 @@ const ShoppingBagPanel = ({
               <li className="bag-panel__item" key={`item-${idx}`}>
                 <ShoppingBagItem
                   bagItem={bagItem}
-                  onShoppingBagAction={onShoppingBagAction}
+                  addItem={addItem}
+                  removeItem={removeItem}
+                  removeAllItems={removeAllItems}
                 />
               </li>
             );

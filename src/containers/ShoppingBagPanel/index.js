@@ -1,10 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ShoppingBagPanel from './ShoppingBagPanel';
-import { closeSlider } from '../../actions';
+import {
+  closeSlider,
+  addItem,
+  removeItem,
+  removeAllItems,
+} from '../../actions';
 
 const ShoppingBagPanelContainer = (props) => {
   return <ShoppingBagPanel {...props} />;
+};
+
+const mapStateToProps = ({ shoppingBagReducer }) => {
+  return {
+    shoppingBag: shoppingBagReducer,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -12,7 +23,19 @@ const mapDispatchToProps = (dispatch) => {
     closeSlider() {
       dispatch(closeSlider());
     },
+    addItem(item) {
+      dispatch(addItem(item));
+    },
+    removeItem(item) {
+      dispatch(removeItem(item));
+    },
+    removeAllItems(item) {
+      dispatch(removeAllItems(item));
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps)(ShoppingBagPanelContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShoppingBagPanelContainer);

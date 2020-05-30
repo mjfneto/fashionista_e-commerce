@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductForm.css';
 
-const ProductForm = ({ product, onShoppingBagAction }) => {
+const ProductForm = ({ product, addItem }) => {
   const { sizes } = product;
 
   const handleFormSubmit = (e) => {
@@ -9,11 +9,7 @@ const ProductForm = ({ product, onShoppingBagAction }) => {
     const inputs = e.target.querySelectorAll('input[type="radio"]');
 
     for (let input of inputs) {
-      input.checked &&
-        onShoppingBagAction({
-          type: 'ADD',
-          item: { ...product, sizeChoice: input.value },
-        });
+      input.checked && addItem({ ...product, sizeChoice: input.value });
     }
   };
 
