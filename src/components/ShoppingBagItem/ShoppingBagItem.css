@@ -51,8 +51,6 @@
 
 .bag-item__button {
   box-sizing: content-box;
-  width: 2.5rem;
-  height: 2.5rem;
   padding: 1.5rem;
   cursor: pointer;
   background: transparent;
