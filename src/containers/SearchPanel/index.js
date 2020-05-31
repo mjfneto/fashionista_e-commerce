@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchPanel from './SearchPanel';
-import { queryProducts, closeSlider } from '../../actions';
+import { queryProducts, clearQuery, closeSlider } from '../../actions';
 
 const SearchPanelContainer = (props) => {
   return <SearchPanel {...props} />;
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     queryProducts(query) {
       dispatch(queryProducts(query));
+    },
+    clearQuery() {
+      dispatch(clearQuery());
     },
     closeSlider() {
       dispatch(closeSlider());

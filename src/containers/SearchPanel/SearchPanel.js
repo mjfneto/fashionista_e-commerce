@@ -3,7 +3,12 @@ import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import SearchResult from '../../components/SearchResult/SearchResult';
 import './SearchPanel.css';
 
-const SearchPanel = ({ showingProducts, queryProducts, closeSlider }) => {
+const SearchPanel = ({
+  showingProducts,
+  queryProducts,
+  clearQuery,
+  closeSlider,
+}) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
 
   return (
@@ -16,7 +21,11 @@ const SearchPanel = ({ showingProducts, queryProducts, closeSlider }) => {
       </nav>
       <div>
         <input
-          onChange={(e) => queryProducts(e.target.value)}
+          onChange={(e) =>
+            e.target.value.trim() !== ''
+              ? queryProducts(e.target.value)
+              : clearQuery()
+          }
           type="text"
           placeholder="Buscar por produto"
           className="search-panel__input"
