@@ -7,13 +7,22 @@ describe('numStringToNum', () => {
   });
 
   it('expects a string (not empty and containing at least one digit) as parameter', () => {
-    expect(() => numStringToNum('string')).toThrow(TypeError);
-    expect(() => numStringToNum('string12')).not.toThrow(TypeError);
-    expect(() => numStringToNum('')).toThrow(TypeError);
-    expect(() => numStringToNum({})).toThrow(TypeError);
-    expect(() => numStringToNum(NaN)).toThrow(TypeError);
-    expect(() => numStringToNum(-0)).toThrow(TypeError);
-    expect(() => numStringToNum(null)).toThrow(TypeError);
+    expect(() => numStringToNum('string')).toThrowError(TypeError);
+    expect(() => numStringToNum('string12')).not.toThrowError(TypeError);
+    expect(() => numStringToNum('')).toThrowError(TypeError);
+    expect(() => numStringToNum({})).toThrowError(TypeError);
+    expect(() => numStringToNum(NaN)).toThrowError(
+      'parameter is not a valid string, it is NaN'
+    );
+    expect(() => numStringToNum(-0)).toThrowError(
+      'parameter is not a valid string, it is negative zero'
+    );
+    expect(() => numStringToNum(null)).toThrowError(
+      'parameter is not a valid string, it is null'
+    );
+    expect(() => numStringToNum(undefined)).toThrowError(
+      'parameter is not a valid string, it is undefined'
+    );
   });
 
   it('outputs first occurrence of +/- decimal/integer in string', () => {

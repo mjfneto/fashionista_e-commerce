@@ -8,11 +8,20 @@ describe('roundToDigits', () => {
   });
 
   it("expects a valid number or treats 'undefined' as 0)", () => {
-    expect(() => roundToDigits()).not.toThrowError('x is not a number');
-    expect(() => roundToDigits(0)).not.toThrowError('x is not a number');
-    expect(() => roundToDigits('string')).toThrowError('x is not a number');
-    expect(() => roundToDigits(NaN)).toThrowError('x is not a number');
-    expect(() => roundToDigits(-0)).toThrowError('x is not a number');
+    expect(() => roundToDigits()).not.toThrowError();
+    expect(() => roundToDigits(0)).not.toThrowError();
+    expect(() => roundToDigits('string')).toThrowError(
+      'parameter must be a valid number, it is string'
+    );
+    expect(() => roundToDigits(NaN)).toThrowError(
+      'parameter must be a valid number, it is NaN'
+    );
+    expect(() => roundToDigits(-0)).toThrowError(
+      'parameter must be a valid number, it is negative zero'
+    );
+    expect(() => roundToDigits(null)).toThrowError(
+      'parameter must be a valid number, it is null'
+    );
   });
 
   it('when given a valid number, returns a function', () => {
@@ -23,10 +32,22 @@ describe('roundToDigits', () => {
 
 describe('toDigits', () => {
   it('expects a valid (not NaN or -0) number as parameter', () => {
-    expect(roundToDigits(2)).toThrowError('y is not a number');
-    expect(() => roundToDigits(2)('string')).toThrowError('y is not a number');
-    expect(() => roundToDigits(2)(NaN)).toThrowError('y is not a number');
-    expect(() => roundToDigits(2)(-0)).toThrowError('y is not a number');
+    expect(roundToDigits(2)).toThrowError();
+    expect(() => roundToDigits(2)('string')).toThrowError(
+      'parameter must be a valid number, it is string'
+    );
+    expect(() => roundToDigits(2)(NaN)).toThrowError(
+      'parameter must be a valid number, it is NaN'
+    );
+    expect(() => roundToDigits(2)(-0)).toThrowError(
+      'parameter must be a valid number, it is negative zero'
+    );
+    expect(() => roundToDigits(2)(null)).toThrowError(
+      'parameter must be a valid number, it is null'
+    );
+    expect(() => roundToDigits(2)(undefined)).toThrowError(
+      'parameter must be a valid number, it is undefined'
+    );
   });
 
   it('expects +/- integer/decimal as output', () => {

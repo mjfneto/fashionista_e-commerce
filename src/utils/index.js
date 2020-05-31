@@ -6,7 +6,17 @@ export function numStringToNum(val) {
     val.trim() === '' ||
     val.search(/\d/g) === -1
   ) {
-    throw new TypeError('val is not a string');
+    throw new TypeError(
+      `parameter is not a valid string, it is ${
+        isNaN(val)
+          ? 'NaN'
+          : isNegZero(val)
+          ? 'negative zero'
+          : isNull(val)
+          ? 'null'
+          : typeof val
+      }`
+    );
   }
 
   let [numString] = val.match(/[+-]?[\d.,]+/);
@@ -20,10 +30,37 @@ export function numStringToNum(val) {
 export function roundToDigits(x) {
   // tested
   if (typeof x === 'undefined') x = 0;
-  if (notValidNum(x)) throw new TypeError('x is not a number');
+  if (typeof x === 'string') {
+    throw new TypeError('parameter must be a valid number, it is string');
+  }
+
+  if (notValidNum(x)) {
+    throw new Error(
+      `parameter must be a valid number, it is ${
+        isNaN(x)
+          ? 'NaN'
+          : isNegZero(x)
+          ? 'negative zero'
+          : isNull(x)
+          ? 'null'
+          : typeof x
+      }`
+    );
+  }
 
   return function toDigits(y) {
-    if (notValidNum(y)) throw new TypeError('y is not a number');
+    if (notValidNum(y))
+      throw new Error(
+        `parameter must be a valid number, it is ${
+          isNaN(y)
+            ? 'NaN'
+            : isNegZero(y)
+            ? 'negative zero'
+            : isNull(y)
+            ? 'null'
+            : typeof y
+        }`
+      );
     return Number(y.toFixed(x));
   };
 }
@@ -40,4 +77,8 @@ export function isNaN(val) {
 
 export function isNegZero(val) {
   return val === 0 && 1 / val === -Infinity;
+}
+
+export function isNull(val) {
+  return val == undefined && typeof val === 'object';
 }
