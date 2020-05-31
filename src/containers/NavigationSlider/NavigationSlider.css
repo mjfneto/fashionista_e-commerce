@@ -10,7 +10,7 @@
 }
 
 #nav-slider.open {
-  width: 100vw;
+  width: 100%;
 }
 
 .portal-container,
@@ -20,6 +20,6 @@
 
 @media screen and (min-width: 1020px) {
   #nav-slider.open {
-    width: 45vw;
+    width: 45%;
   }
 }
