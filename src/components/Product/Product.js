@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from '@reach/router';
 import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
+
+import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import './Product.css';
 
 const Product = ({ product }) => {
   const [placeholder, setPlaceholder] = useState(false);
+  const [SaleIcon] = useSVGIcon({ icon: 'sale' });
 
   const {
     name,
@@ -29,9 +32,14 @@ const Product = ({ product }) => {
       data-testid="product"
     >
       <figure className="product__image-wrapper">
-        <span className="product__discount-tag">
-          {on_sale && `-${discount_percentage}`}
-        </span>
+        {on_sale && (
+          <>
+            <SaleIcon />
+            <span className="product__discount-tag">
+              {`-${discount_percentage}`}
+            </span>
+          </>
+        )}
         <img
           onError={handleImageLoadError}
           className="product__image"
