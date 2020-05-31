@@ -13,12 +13,7 @@
   width: 100%;
 }
 
-.portal-container,
-.slider {
-  height: 100%;
-}
-
-@media screen and (min-width: 1020px) {
+@media screen and (min-width: 812px) {
   #nav-slider.open {
     width: 45%;
   }

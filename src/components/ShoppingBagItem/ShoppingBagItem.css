@@ -1,11 +1,14 @@
 .bag-item {
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   margin: 1rem 0;
 }
 
 .bag-item .image-wrapper {
-  flex-basis: 25%;
+  flex-basis: 35%;
+  margin: 0;
 }
 
 .bag-item__image {
@@ -13,16 +16,14 @@
 }
 
 .bag-item__details {
-  flex-basis: 45%;
-  margin-left: 5%;
+  flex-basis: 40%;
 }
 
 .bag-item__controls {
-  flex-basis: 10%;
+  flex-basis: 15%;
   display: flex;
   flex-flow: column;
   align-items: center;
-  margin-left: 5%;
 }
 
 .bag-item__title {
@@ -65,4 +66,46 @@
 .bag-item__button--remove {
   stroke: #de6274;
   fill: #de6274;
+}
+
+@media screen and (min-width: 411px) {
+  .bag-item {
+    align-items: flex-start;
+  }
+
+  .bag-item .image-wrapper {
+    flex-basis: 25%;
+  }
+}
+
+@media screen and (min-width: 411px) {
+  .bag-item {
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+  .bag-item .image-wrapper {
+    flex-basis: 25%;
+  }
+
+  .bag-item__controls {
+    align-self: flex-start;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 812px) {
+  .bag-item .image-wrapper {
+    flex-basis: 35%;
+    margin: 0 0 0 5%;
+  }
+
+  .bag-item__details {
+    flex-basis: 45%;
+    margin: 0 0 0 5%;
+  }
+
+  .bag-item__controls {
+    flex-basis: 10%;
+  }
 }

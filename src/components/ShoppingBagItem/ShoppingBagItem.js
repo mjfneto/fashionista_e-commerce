@@ -36,16 +36,16 @@ const ShoppingBagItem = ({ bagItem, addItem, removeItem, removeAllItems }) => {
   };
 
   return (
-    <figure className="bag-item">
-      <div className="image-wrapper">
+    <div className="bag-item">
+      <figure className="image-wrapper">
         <img
           onError={handleImageLoadError}
           className="bag-item__image"
           src={!placeholder ? image : fallbackPlaceholder}
           alt="name"
         />
-      </div>
-      <figcaption className="bag-item__details">
+      </figure>
+      <div className="bag-item__details">
         <h3 className="bag-item__title">{name}</h3>
         <p className="bag-item__size">Tamanho: {sizeChoice}</p>
         <p className="bag-item__price">{actual_price}</p>
@@ -53,7 +53,7 @@ const ShoppingBagItem = ({ bagItem, addItem, removeItem, removeAllItems }) => {
         <p className="bag-item__quantity">
           Quantidade: <output>{quantity}</output>
         </p>
-      </figcaption>
+      </div>
       <div className="bag-item__controls">
         <button onClick={handleAdd} className="bag-item__button">
           <AddIcon />
@@ -68,7 +68,7 @@ const ShoppingBagItem = ({ bagItem, addItem, removeItem, removeAllItems }) => {
           <RemoveIcon />
         </button>
       </div>
-    </figure>
+    </div>
   );
 };
 
