@@ -2,7 +2,8 @@ import {
   FETCH_PRODUCTS_SUCCESS,
   QUERY_PRODUCTS,
   CLEAR_QUERY,
-  OPEN_SLIDER,
+  OPEN_SEARCH_SLIDER,
+  OPEN_SHOPPING_BAG_SLIDER,
   CLOSE_SLIDER,
   ADD_ITEM,
   REMOVE_ITEM,
@@ -23,9 +24,12 @@ export const clearQuery = () => ({
   type: CLEAR_QUERY,
 });
 
-export const openSlider = (slider) => ({
-  type: OPEN_SLIDER,
-  slider,
+export const openSearchSlider = () => ({
+  type: OPEN_SEARCH_SLIDER,
+});
+
+export const openShoppingBagSlider = () => ({
+  type: OPEN_SHOPPING_BAG_SLIDER,
 });
 
 export const closeSlider = () => ({

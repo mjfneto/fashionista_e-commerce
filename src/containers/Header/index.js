@@ -1,7 +1,8 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Header from './Header';
-import { openSlider } from '../../actions';
+import { openSearchSlider, openShoppingBagSlider } from '../../actions';
 
 const HeaderContainer = (props) => {
   return <Header {...props} />;
@@ -14,11 +15,10 @@ const mapStateToProps = ({ shoppingBagReducer }) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    openSlider(slider) {
-      dispatch(openSlider(slider));
-    },
-  };
+  return bindActionCreators(
+    { openSearchSlider, openShoppingBagSlider },
+    dispatch
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

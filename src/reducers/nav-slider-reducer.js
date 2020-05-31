@@ -1,4 +1,8 @@
-import { OPEN_SLIDER, CLOSE_SLIDER } from '../actions/actionTypes';
+import {
+  OPEN_SEARCH_SLIDER,
+  OPEN_SHOPPING_BAG_SLIDER,
+  CLOSE_SLIDER,
+} from '../actions/actionTypes';
 
 const initialState = {
   slider: '',
@@ -6,9 +10,13 @@ const initialState = {
 
 export default function navSliderReducer(state = initialState, action) {
   switch (action.type) {
-    case OPEN_SLIDER:
+    case OPEN_SEARCH_SLIDER:
       return {
-        slider: action.slider,
+        slider: 'search',
+      };
+    case OPEN_SHOPPING_BAG_SLIDER:
+      return {
+        slider: 'shoppingBag',
       };
     case CLOSE_SLIDER:
       return {

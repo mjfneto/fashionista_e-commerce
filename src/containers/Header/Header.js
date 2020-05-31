@@ -4,7 +4,7 @@ import logo from '../../assets/images/fashionista-logo.svg';
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import './Header.css';
 
-const Header = ({ openSlider, bagQuantity }) => {
+const Header = ({ openSearchSlider, openShoppingBagSlider, bagQuantity }) => {
   const headerRef = useRef();
 
   useEffect(() => {
@@ -51,19 +51,13 @@ const Header = ({ openSlider, bagQuantity }) => {
           <img className="header__logo" src={logo} alt="Fashionista logo" />
         </Link>
         <nav className="header__nav">
-          <button
-            onClick={() => openSlider('search')}
-            className="header__button"
-          >
+          <button onClick={openSearchSlider} className="header__button">
             <SearchIcon />
           </button>
           <button className="header__button">
             <WishListIcon />
           </button>
-          <button
-            onClick={() => openSlider('shoppingBag')}
-            className="header__button"
-          >
+          <button onClick={openShoppingBagSlider} className="header__button">
             <ShoppingBagIcon bagQuantity={bagQuantity} />
           </button>
         </nav>
