@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Header from './Header';
-import { openSearchSlider, openShoppingBagSlider } from '../../actions';
+import { openSearchSlider, openShoppingBagSlider } from '../../store/actions';
 
 const HeaderContainer = (props) => {
   return <Header {...props} />;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProductPage from './ProductPage';
-import { addItem } from '../../actions';
+import { addItem } from '../../store/actions';
 
 const ProductPageContainer = (props) => {
   return <ProductPage {...props} />;

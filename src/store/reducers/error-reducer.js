@@ -1,4 +1,4 @@
-import { OPEN_ERROR, CLOSE_ERROR } from '../actions/actionTypes';
+import { OPEN_ERROR, CLOSE_ERROR } from '../../store/actions/actionTypes';
 
 const initialState = {
   error: null,

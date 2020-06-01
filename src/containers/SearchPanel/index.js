@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchPanel from './SearchPanel';
-import { queryProducts, clearQuery, closeSlider } from '../../actions';
+import { queryProducts, clearQuery, closeSlider } from '../../store/actions';
 
 const SearchPanelContainer = (props) => {
   return <SearchPanel {...props} />;

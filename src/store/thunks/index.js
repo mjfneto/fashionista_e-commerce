@@ -3,7 +3,7 @@ import {
   fetchProductsSuccess,
   openError,
   closeError,
-} from '../actions';
+} from '../../store/actions';
 
 export const fetchProductsThunk = (dispatch, getState) => {
   const { errorReducer } = getState();

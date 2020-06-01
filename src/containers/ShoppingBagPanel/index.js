@@ -6,7 +6,7 @@ import {
   addItem,
   removeItem,
   removeAllItems,
-} from '../../actions';
+} from '../../store/actions';
 
 const ShoppingBagPanelContainer = (props) => {
   return <ShoppingBagPanel {...props} />;

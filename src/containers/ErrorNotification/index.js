@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ErrorNotification from './ErrorNotification';
 
-import { closeError } from '../../actions';
+import { closeError } from '../../store/actions';
 
 import './ErrorNotification.css';
 

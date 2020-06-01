@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import App from './App';
-import { fetchProducts, clearQuery } from '../../actions';
+import { fetchProducts, clearQuery } from '../../store/actions';
 
 const AppContainer = (props) => {
   return <App {...props} />;
