@@ -1,4 +1,5 @@
 import {
+  FETCH_PRODUCTS,
   FETCH_PRODUCTS_SUCCESS,
   QUERY_PRODUCTS,
   CLEAR_QUERY,
@@ -9,6 +10,10 @@ import {
   REMOVE_ITEM,
   REMOVE_ALL_ITEMS,
 } from './actionTypes';
+
+export const fetchProducts = () => ({
+  type: FETCH_PRODUCTS,
+});
 
 export const setProducts = (data) => ({
   type: FETCH_PRODUCTS_SUCCESS,

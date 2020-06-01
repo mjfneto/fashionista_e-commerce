@@ -3,19 +3,29 @@ import {
   FETCH_PRODUCTS_SUCCESS,
   QUERY_PRODUCTS,
   CLEAR_QUERY,
+  FETCH_PRODUCTS,
 } from '../actions/actionTypes';
 
 const initialState = {
+  loading: false,
   products: [],
   query: '',
   showingProducts: [],
 };
 
 export default function productsReducer(state = initialState, action) {
+  if (action.type === FETCH_PRODUCTS) {
+    return {
+      ...state,
+      loading: true,
+    };
+  }
+
   if (action.type === FETCH_PRODUCTS_SUCCESS) {
     return {
       ...state,
       products: action.payload,
+      loading: false,
     };
   }
 

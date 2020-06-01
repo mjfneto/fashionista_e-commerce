@@ -2,11 +2,14 @@ import React from 'react';
 import Product from '../../components/Product/Product';
 import './Catalog.css';
 
-const Catalog = ({ products }) => {
+const Catalog = ({ loading, products }) => {
   return (
     <main className="catalog container" data-testid="catalog">
-      <p className="catalog__size">{products.length} itens</p>
+      <p className="catalog__size">
+        {!loading ? products.length : 'Carregando...'} itens
+      </p>
       <div className="catalog__products">
+        {loading ? 'Carregando...' : null}
         {products &&
           products.map((product, idx) => (
             <Product

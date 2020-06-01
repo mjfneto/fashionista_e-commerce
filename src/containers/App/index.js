@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import App from './App';
-import { setProducts, clearQuery } from '../../actions';
+import { fetchProducts, setProducts, clearQuery } from '../../actions';
 
 const AppContainer = (props) => {
   return <App {...props} />;
@@ -15,6 +15,9 @@ const mapStateToProps = ({ navSliderReducer }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchProducts() {
+      dispatch(fetchProducts());
+    },
     setProducts(data) {
       dispatch(setProducts(data));
     },

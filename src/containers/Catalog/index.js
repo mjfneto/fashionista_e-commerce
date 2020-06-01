@@ -8,6 +8,7 @@ const CatalogContainer = (props) => {
 
 const mapStateToProps = ({ productsReducer }) => {
   return {
+    loading: productsReducer.loading,
     products: productsReducer.products,
   };
 };

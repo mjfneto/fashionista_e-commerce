@@ -1,5 +1,3 @@
-import mockData from '../../mockData/mockData';
-
 import React, { useEffect } from 'react';
 import { Router } from '@reach/router';
 
@@ -13,10 +11,16 @@ import ShoppingBagPanel from '../ShoppingBagPanel';
 
 import './App.css';
 
-const App = ({ slider, setProducts, clearQuery }) => {
+const App = ({ slider, fetchProducts, setProducts, clearQuery }) => {
   useEffect(() => {
-    setProducts(mockData);
-  }, [setProducts]);
+    fetchProducts();
+
+    fetch('https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog')
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  }, [fetchProducts, setProducts]);
 
   useEffect(() => {
     if (!slider) {
