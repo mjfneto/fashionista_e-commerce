@@ -4,6 +4,13 @@
   height: 100%;
 }
 
+.bag-panel__main-wrapper {
+  flex: 6;
+  display: flex;
+  flex-flow: column;
+  padding: 0 2rem;
+}
+
 .bag-panel__nav {
   display: flex;
   align-items: center;
@@ -32,8 +39,7 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  flex: 1;
-  height: 60rem;
+  flex: 0rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -60,7 +66,7 @@
 }
 
 .bag-panel__subtotal-wrapper {
-  flex-basis: 10%;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
