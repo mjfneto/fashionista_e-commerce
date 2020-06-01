@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Router } from '@reach/router';
 
+import ErrorNotification from '../ErrorNotification';
 import Header from '../../containers/Header';
 import Catalog from '../../containers/Catalog';
 import ProductPage from '../ProductPage';
@@ -11,16 +12,10 @@ import ShoppingBagPanel from '../ShoppingBagPanel';
 
 import './App.css';
 
-const App = ({ slider, fetchProducts, setProducts, clearQuery }) => {
+const App = ({ slider, fetchProducts, clearQuery, error }) => {
   useEffect(() => {
     fetchProducts();
-
-    fetch(String(process.env.API_END_POINT))
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
-  }, [fetchProducts, setProducts]);
+  }, [fetchProducts]);
 
   useEffect(() => {
     if (!slider) {
@@ -31,10 +26,13 @@ const App = ({ slider, fetchProducts, setProducts, clearQuery }) => {
   return (
     <div data-testid="app">
       <Header />
-      <Router>
-        <Catalog path="/" />
-        <ProductPage path="produto/:name" />
-      </Router>
+      {error && <ErrorNotification />}
+      {!error && (
+        <Router>
+          <Catalog path="/" />
+          <ProductPage path="produto/:name" />
+        </Router>
+      )}
       {slider && (
         <>
           <Overlay />

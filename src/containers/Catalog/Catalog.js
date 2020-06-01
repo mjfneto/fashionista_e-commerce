@@ -5,9 +5,7 @@ import './Catalog.css';
 const Catalog = ({ loading, products }) => {
   return (
     <main className="catalog container" data-testid="catalog">
-      <p className="catalog__size">
-        {!loading ? products.length : 'Carregando...'} itens
-      </p>
+      <p className="catalog__size">{!loading ? products.length : 0} itens</p>
       <div className="catalog__products">
         {loading ? 'Carregando...' : null}
         {products &&

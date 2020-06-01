@@ -1,9 +1,9 @@
 import escapeRegExp from 'escape-string-regexp';
 import {
+  FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   QUERY_PRODUCTS,
   CLEAR_QUERY,
-  FETCH_PRODUCTS,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
 };
 
 export default function productsReducer(state = initialState, action) {
-  if (action.type === FETCH_PRODUCTS) {
+  if (action.type === FETCH_PRODUCTS_BEGIN) {
     return {
       ...state,
       loading: true,

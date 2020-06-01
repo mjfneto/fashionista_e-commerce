@@ -1,6 +1,8 @@
 import {
-  FETCH_PRODUCTS,
+  FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
+  OPEN_ERROR,
+  CLOSE_ERROR,
   QUERY_PRODUCTS,
   CLEAR_QUERY,
   OPEN_SEARCH_SLIDER,
@@ -11,13 +13,28 @@ import {
   REMOVE_ALL_ITEMS,
 } from './actionTypes';
 
-export const fetchProducts = () => ({
-  type: FETCH_PRODUCTS,
+import { fetchProductsThunk } from '../thunks';
+
+export function fetchProducts() {
+  return fetchProductsThunk;
+}
+
+export const fetchProductsBegin = () => ({
+  type: FETCH_PRODUCTS_BEGIN,
 });
 
-export const setProducts = (data) => ({
+export const fetchProductsSuccess = (data) => ({
   type: FETCH_PRODUCTS_SUCCESS,
   payload: data,
+});
+
+export const openError = (error) => ({
+  type: OPEN_ERROR,
+  error,
+});
+
+export const closeError = () => ({
+  type: CLOSE_ERROR,
 });
 
 export const queryProducts = (query) => ({
