@@ -38,7 +38,6 @@ const Header = ({ openSearchSlider, openShoppingBagSlider, bagQuantity }) => {
   const [SearchIcon] = useSVGIcon({
     icon: 'search',
   });
-  const [WishListIcon] = useSVGIcon({ icon: 'wishlist' });
   const [ShoppingBagIcon] = useSVGIcon({
     icon: 'shoppingBag',
     counter: true,
@@ -53,9 +52,6 @@ const Header = ({ openSearchSlider, openShoppingBagSlider, bagQuantity }) => {
         <nav className="header__nav">
           <button onClick={openSearchSlider} className="header__button">
             <SearchIcon />
-          </button>
-          <button className="header__button">
-            <WishListIcon />
           </button>
           <button onClick={openShoppingBagSlider} className="header__button">
             <ShoppingBagIcon bagQuantity={bagQuantity} />
