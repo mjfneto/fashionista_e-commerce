@@ -1,5 +1,5 @@
 import React from 'react';
-import SVGLib from '../../assets/SVGLib';
+import SVGLib from '../../modules/SVGLib';
 import './SVGIcon.css';
 
 const useSVGIcon = ({ icon, counter }) => {
