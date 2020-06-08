@@ -4,16 +4,6 @@
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.02);
 }
 
-.header.sticky {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-}
-
-.header.sticky + div {
-  padding-top: 4.7rem;
-}
-
 .header .container {
   display: flex;
   align-items: center;
@@ -43,10 +33,6 @@
 }
 
 @media screen and (min-width: 411px) {
-  .header.sticky + div {
-    padding-top: 7.7rem;
-  }
-
   .header .container {
     padding: 1.25rem 1.6rem;
   }

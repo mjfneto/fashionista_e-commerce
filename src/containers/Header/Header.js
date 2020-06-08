@@ -1,40 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from '@reach/router';
+
 import logo from '../../assets/images/fashionista-logo.svg';
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
+
+import Sticky from './Sticky';
+
 import './Header.css';
 
 const Header = ({ openSearchSlider, openShoppingBagSlider, bagQuantity }) => {
-  const headerRef = useRef();
-
-  useEffect(() => {
-    window.addEventListener('scroll', onStickyHeader);
-
-    if (!headerRef.current) {
-      headerRef.current = document.querySelector('.header');
-    }
-
-    return () => {
-      window.removeEventListener('scroll', onStickyHeader);
-    };
-
-    // ***********
-
-    function onStickyHeader() {
-      let pageY = window.pageYOffset;
-      let headerTop = headerRef.current.offsetTop;
-      let sticky = headerRef.current.classList.contains('sticky');
-
-      if (pageY > headerTop && !sticky) {
-        headerRef.current.classList.add('sticky');
-      }
-
-      if (pageY === headerTop && sticky) {
-        headerRef.current.classList.remove('sticky');
-      }
-    }
-  }, []);
-
   const [SearchIcon] = useSVGIcon({
     icon: 'search',
   });
@@ -44,21 +18,23 @@ const Header = ({ openSearchSlider, openShoppingBagSlider, bagQuantity }) => {
   });
 
   return (
-    <header className="header" data-testid="header">
-      <div className="container">
-        <Link to="/" data-testid="home-link">
-          <img className="header__logo" src={logo} alt="Fashionista logo" />
-        </Link>
-        <nav className="header__nav">
-          <button onClick={openSearchSlider} className="header__button">
-            <SearchIcon />
-          </button>
-          <button onClick={openShoppingBagSlider} className="header__button">
-            <ShoppingBagIcon bagQuantity={bagQuantity} />
-          </button>
-        </nav>
-      </div>
-    </header>
+    <Sticky>
+      <header className="header" data-testid="header">
+        <div className="container">
+          <Link to="/" data-testid="home-link">
+            <img className="header__logo" src={logo} alt="Fashionista logo" />
+          </Link>
+          <nav className="header__nav">
+            <button onClick={openSearchSlider} className="header__button">
+              <SearchIcon />
+            </button>
+            <button onClick={openShoppingBagSlider} className="header__button">
+              <ShoppingBagIcon bagQuantity={bagQuantity} />
+            </button>
+          </nav>
+        </div>
+      </header>
+    </Sticky>
   );
 };
 
