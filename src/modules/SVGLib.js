@@ -1,41 +1,44 @@
 import React from 'react';
 
 export default {
+  iconCounter: 0,
   getSVG(icon) {
     let className, ariaLabelledBy;
+
+    this.iconCounter++;
 
     switch (icon) {
       case 'search':
         className = 'svg-icon--search';
-        ariaLabelledBy = 'search-icon';
+        ariaLabelledBy = `search-icon-${this.iconCounter}`;
         break;
       case 'shoppingBag':
         className = 'svg-icon--shopping-bag';
-        ariaLabelledBy = 'shopping-bag-icon';
+        ariaLabelledBy = `shopping-bag-icon-${this.iconCounter}`;
         break;
       case 'wishlist':
         className = 'svg-icon--shopping-bag';
-        ariaLabelledBy = 'wishlist-icon';
+        ariaLabelledBy = `wishlist-icon-${this.iconCounter}`;
         break;
       case 'return':
         className = 'svg-icon--return';
-        ariaLabelledBy = 'return-icon';
+        ariaLabelledBy = `return-icon-${this.iconCounter}`;
         break;
       case 'add':
         className = 'svg-icon--add';
-        ariaLabelledBy = 'add-icon';
+        ariaLabelledBy = `add-icon-${this.iconCounter}`;
         break;
       case 'subtract':
         className = 'svg-icon--subtract';
-        ariaLabelledBy = 'subtract-icon';
+        ariaLabelledBy = `subtract-icon-${this.iconCounter}`;
         break;
       case 'remove':
         className = 'svg-icon--remove';
-        ariaLabelledBy = 'remove-icon';
+        ariaLabelledBy = `remove-icon-${this.iconCounter}`;
         break;
       case 'sale':
         className = 'svg-icon--sale';
-        ariaLabelledBy = 'sale-icon';
+        ariaLabelledBy = `sale-icon-${this.iconCounter}`;
         break;
       default:
         throw new Error('The icon passed is not in the library');
