@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductForm.css';
 
 const ProductForm = ({ product, addItem }) => {
   const { sizes } = product;
+  const [checkedRadio, setCheckedRadio] = useState(null);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -15,13 +16,19 @@ const ProductForm = ({ product, addItem }) => {
 
   return (
     <form onSubmit={handleFormSubmit} className="product-form">
-      <div className="product-form__radio-group">
+      <div
+        className="product-form__radio-group"
+        aria-label="Tamanhos disponíveis"
+      >
         {sizes
           .filter(({ available }) => available)
           .map(({ size }, idx) => (
-            <div key={`size-${size}`} className="product-form__radio">
+            <div key={`size-${size}`}>
               <input
                 id={`size-${idx}`}
+                onClick={() => setCheckedRadio(idx)}
+                aria-checked={checkedRadio === idx}
+                className="product-form__radio"
                 type="radio"
                 name="size"
                 value={size}
