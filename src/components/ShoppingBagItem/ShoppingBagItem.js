@@ -4,7 +4,13 @@ import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 
 import './ShoppingBagItem.css';
 
-const ShoppingBagItem = ({ bagItem, addItem, removeItem, removeAllItems }) => {
+const ShoppingBagItem = ({
+  focusRef,
+  bagItem,
+  addItem,
+  removeItem,
+  removeAllItems,
+}) => {
   const [placeholder, setPlaceholder] = useState(false);
   const [AddIcon] = useSVGIcon({ icon: 'add' });
   const [SubtractIcon] = useSVGIcon({ icon: 'subtract' });
@@ -55,7 +61,7 @@ const ShoppingBagItem = ({ bagItem, addItem, removeItem, removeAllItems }) => {
         </p>
       </div>
       <div className="bag-item__controls">
-        <button onClick={handleAdd} className="bag-item__button">
+        <button ref={focusRef} onClick={handleAdd} className="bag-item__button">
           <AddIcon />
         </button>
         <button onClick={handleSubtract} className="bag-item__button">

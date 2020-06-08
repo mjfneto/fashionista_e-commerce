@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import ShoppingBagItem from '../../components/ShoppingBagItem/ShoppingBagItem';
 
@@ -12,6 +12,11 @@ const ShoppingBagPanel = ({
   removeAllItems,
 }) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
+  const focusRef = useRef();
+
+  useEffect(() => {
+    focusRef.current.focus();
+  }, []);
 
   return (
     <div className="bag-panel">
@@ -30,6 +35,7 @@ const ShoppingBagPanel = ({
               return (
                 <li className="bag-panel__item" key={`item-${idx}`}>
                   <ShoppingBagItem
+                    focusRef={idx === 0 ? focusRef : null}
                     bagItem={bagItem}
                     addItem={addItem}
                     removeItem={removeItem}

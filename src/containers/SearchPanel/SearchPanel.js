@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 import SearchResult from '../../components/SearchResult/SearchResult';
 import './SearchPanel.css';
@@ -10,6 +10,11 @@ const SearchPanel = ({
   closeSlider,
 }) => {
   const [ReturnIcon] = useSVGIcon({ icon: 'return' });
+  const searchInputRef = useRef();
+
+  useEffect(() => {
+    searchInputRef.current.focus();
+  }, []);
 
   return (
     <div className="search-panel">
@@ -17,10 +22,13 @@ const SearchPanel = ({
         <button onClick={closeSlider} className="search-panel__button">
           <ReturnIcon />
         </button>
-        <h2 className="search-panel__title">Buscar por produto</h2>
+        <h2 id="search-panel-heading" className="search-panel__title">
+          Buscar por produto
+        </h2>
       </nav>
       <div>
         <input
+          ref={searchInputRef}
           onChange={(e) =>
             e.target.value.trim() !== ''
               ? queryProducts(e.target.value)
