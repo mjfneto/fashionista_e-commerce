@@ -66,8 +66,9 @@
   background: #efefef;
 }
 
-.bag-item__button--remove {
-  stroke: #de6274;
+.bag-item__button--remove path,
+.bag-item__button--remove rect,
+.bag-item__button--remove polygon {
   fill: #de6274;
 }
 

@@ -20,9 +20,15 @@
   transform: rotateY(180deg);
 }
 
-.product__image-wrapper .svg-icon--sale {
+.svg-icon--sale {
+  stroke-width: 0.5px;
+}
+
+.svg-icon--sale rect,
+.svg-icon--sale path,
+.svg-icon--sale polygon {
+  fill: limegreen;
   stroke: limegreen;
-  stroke-width: 0.75px;
 }
 
 .product__discount-tag {
