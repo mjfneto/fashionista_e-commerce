@@ -1,5 +1,19 @@
 export const twoDigits = roundToDigits(2);
 
+export function toAltName(name) {
+  return name
+    .trim()
+    .split(' ')
+    .reduce((string, word, idx, array) => {
+      const sent = string + word[0] + word.slice(1).toLowerCase();
+      return idx !== array.length - 1 ? sent + ' ' : sent;
+    }, '');
+}
+
+export function toRouteName(name) {
+  return name.trim().toLowerCase().replace(/ /g, '-');
+}
+
 export function numStringToNum(val) {
   if (
     typeof val !== 'string' ||

@@ -3,6 +3,9 @@ import { Link } from '@reach/router';
 import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
+
+import { toAltName, toRouteName } from '../../utils';
+
 import './Product.css';
 
 const Product = ({ product }) => {
@@ -22,7 +25,8 @@ const Product = ({ product }) => {
     setPlaceholder(true);
   };
 
-  const routeName = name.trim().toLowerCase().replace(/ /g, '-');
+  const altName = toAltName(name);
+  const routeName = toRouteName(name);
 
   return (
     <Link
@@ -44,8 +48,8 @@ const Product = ({ product }) => {
           onError={handleImageLoadError}
           className="product__image"
           src={!placeholder ? image : fallbackPlaceholder}
-          alt={name}
-          title={name}
+          alt={altName}
+          title={altName}
         />
         <figcaption className="product__details">
           <h3 className="product__name">{name}</h3>
