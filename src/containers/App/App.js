@@ -5,12 +5,15 @@ import ErrorNotification from '../ErrorNotification';
 import Header from '../../containers/Header';
 import Catalog from '../../containers/Catalog';
 import ProductPage from '../ProductPage';
+
 import Overlay from '../../components/Overlay/Overlay';
 import NavigationSlider from '../NavigationSlider/NavigationSlider';
+
 import SearchPanel from '../SearchPanel';
 import ShoppingBagPanel from '../ShoppingBagPanel';
 
 import './App.css';
+import ScrollToTop from '../../components/ScrollToTop';
 
 const App = ({ slider, fetchProducts, clearQuery, error }) => {
   useEffect(() => {
@@ -29,8 +32,10 @@ const App = ({ slider, fetchProducts, clearQuery, error }) => {
       {error && <ErrorNotification />}
       {!error && (
         <Router>
-          <Catalog path="/" />
-          <ProductPage path="produto/:name" />
+          <ScrollToTop path="/">
+            <Catalog path="/" />
+            <ProductPage path="produto/:name" />
+          </ScrollToTop>
         </Router>
       )}
       {slider && (
