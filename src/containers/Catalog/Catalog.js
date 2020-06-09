@@ -10,6 +10,7 @@ const Catalog = ({ loading, products }) => {
       <div className="catalog__products">
         {loading ? 'Carregando...' : null}
         {products &&
+          !loading &&
           products.map((product, idx) => (
             <Product
               key={`product-${idx}`}
