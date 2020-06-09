@@ -3,6 +3,8 @@ import { Router } from '@reach/router';
 
 import ErrorNotification from '../ErrorNotification';
 import Header from '../../containers/Header';
+
+import TransitionRoute from '../../components/TransitionRoute';
 import Catalog from '../../containers/Catalog';
 import ProductPage from '../ProductPage';
 
@@ -13,7 +15,6 @@ import SearchPanel from '../SearchPanel';
 import ShoppingBagPanel from '../ShoppingBagPanel';
 
 import './App.css';
-import ScrollToTop from '../../components/ScrollToTop';
 
 const App = ({ slider, fetchProducts, clearQuery, error }) => {
   useEffect(() => {
@@ -32,10 +33,8 @@ const App = ({ slider, fetchProducts, clearQuery, error }) => {
       {error && <ErrorNotification />}
       {!error && (
         <Router>
-          <ScrollToTop path="/">
-            <Catalog path="/" />
-            <ProductPage path="produto/:name" />
-          </ScrollToTop>
+          <TransitionRoute path="/" component={Catalog} />
+          <TransitionRoute path="produto/:name" component={ProductPage} />
         </Router>
       )}
       {slider && (
