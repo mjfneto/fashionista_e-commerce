@@ -56,7 +56,7 @@ const Sticky = ({ children }) => {
           ref={benchwarmerRef}
         ></div>
       )}
-      <div className={sticky ? 'sticky' : null} ref={ref}>
+      <div className={`sticky${sticky ? ' active' : ''}`} ref={ref}>
         {children}
       </div>
     </>
