@@ -24,16 +24,29 @@
 }
 
 .search-result__title {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .search-result__price {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
 .search-result__installments {
   font-size: 1.2rem;
   font-weight: 400;
   color: #a7a7a7;
+}
+
+@media screen and (min-width: 411px) {
+  .search-result__title {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  .search-result__price {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
 }

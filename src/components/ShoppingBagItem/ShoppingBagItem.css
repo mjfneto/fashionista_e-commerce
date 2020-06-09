@@ -30,7 +30,8 @@
 }
 
 .bag-item__title {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .bag-item__size {
@@ -39,8 +40,8 @@
 }
 
 .bag-item__price {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
 .bag-item__installments {
@@ -50,7 +51,8 @@
 }
 
 .bag-item__quantity {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
 .bag-item__button {
@@ -75,21 +77,26 @@
 @media screen and (min-width: 411px) {
   .bag-item {
     align-items: flex-start;
-  }
-
-  .bag-item .image-wrapper {
-    flex-basis: 25%;
-  }
-}
-
-@media screen and (min-width: 411px) {
-  .bag-item {
-    align-items: flex-start;
     justify-content: space-around;
   }
 
   .bag-item .image-wrapper {
     flex-basis: 25%;
+  }
+
+  .bag-item__title {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  .bag-item__price {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .bag-item__quantity {
+    font-size: 1.6rem;
+    font-weight: 500;
   }
 
   .bag-item__controls {
