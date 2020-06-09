@@ -11,8 +11,6 @@
 
 .product-form__radio {
   position: absolute;
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
   height: 1px;
   width: 1px;
   border: 0;
@@ -27,19 +25,21 @@
   padding: 1.2rem;
   margin: 0 0.5rem 0 0;
   border: 0.1rem solid rgba(118, 118, 118);
-  border-radius: 0.5rem;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .product-form__radio + label:hover {
   cursor: pointer;
-  border: 1px solid black;
-  background: #9e9e9e;
+  border: 1px solid #a0a0a0;
+  background: #a0a0a0;
 }
 
 .product-form__radio:checked + label {
-  background-color: #a5dc86;
-  box-shadow: none;
+  color: #efefef;
+  font-weight: bold;
+  background: #d32d45;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .product-form__radio:focus + label {

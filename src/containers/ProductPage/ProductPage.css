@@ -50,10 +50,6 @@
   .product-page__details-wrapper {
     flex: 0 1 40%;
   }
-
-  .product-page__radio-group {
-    margin: 3.63rem;
-  }
 }
 
 @media screen and (min-width: 1366px) {
