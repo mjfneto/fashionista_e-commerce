@@ -1,4 +1,4 @@
-import { numStringToNum, twoDigits } from '../../utils';
+import { numStringToNum, twoDigits } from '../../modules/utils';
 import {
   ADD_ITEM,
   REMOVE_ITEM,

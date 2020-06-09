@@ -4,7 +4,7 @@ import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
 
 import useSVGIcon from '../../hooks/useSVGIcon/useSVGIcon';
 
-import { toAltName, toRouteName } from '../../utils';
+import { toAltName, toRouteName } from '../../modules/utils';
 
 import './Product.css';
 
