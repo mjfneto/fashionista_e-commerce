@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Router } from '@reach/router';
 
 import ErrorNotification from '../ErrorNotification';
 import Header from '../../containers/Header';
 
+import TransitionRouter from '../../components/TransitionRouter';
 import TransitionRoute from '../../components/TransitionRoute';
 import Catalog from '../../containers/Catalog';
 import ProductPage from '../ProductPage';
@@ -32,10 +32,10 @@ const App = ({ slider, fetchProducts, clearQuery, error }) => {
       <Header />
       {error && <ErrorNotification />}
       {!error && (
-        <Router>
+        <TransitionRouter>
           <TransitionRoute path="/" component={Catalog} />
           <TransitionRoute path="produto/:name" component={ProductPage} />
-        </Router>
+        </TransitionRouter>
       )}
       {slider && (
         <>

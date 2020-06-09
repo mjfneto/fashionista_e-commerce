@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
 
-const RouteTransition = ({ component: Component, ...rest }) => {
+const TransitionRoute = ({ component: Component, ...rest }) => {
   const { location } = rest;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  return (
-    <>
-      <Component {...rest} />
-    </>
-  );
+  return <Component {...rest} />;
 };
 
-export default RouteTransition;
+export default TransitionRoute;
