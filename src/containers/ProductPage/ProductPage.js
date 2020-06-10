@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import ProductForm from '../../components/ProductForm/ProductForm';
 import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
+
+import { toAltName } from '../../modules/utils';
+
 import './ProductPage.css';
 
 const ProductPage = ({ location, addItem }) => {
@@ -20,6 +23,8 @@ const ProductPage = ({ location, addItem }) => {
     setPlaceholder(true);
   };
 
+  const altName = toAltName(name);
+
   return (
     <section className="container" data-testid="product-page">
       <figure className="product-page">
@@ -27,7 +32,8 @@ const ProductPage = ({ location, addItem }) => {
           className="product-page__image"
           onError={handleImageLoadError}
           src={!placeholder ? image : fallbackPlaceholder}
-          alt={name}
+          title={altName}
+          alt={altName}
         />
         <figcaption className="product-page__details-wrapper">
           <div className="product-page__details">
