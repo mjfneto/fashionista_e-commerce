@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import ProductForm from '../../components/ProductForm/ProductForm';
-import fallbackPlaceholder from '../../assets/images/fallback-placeholder.png';
+import React from 'react';
 
-import { toAltName } from '../../modules/utils';
+import LensImage from './LensImage';
+import ProductForm from '../../components/ProductForm/ProductForm';
 
 import './ProductPage.css';
 
 const ProductPage = ({ location, addItem }) => {
-  const [placeholder, setPlaceholder] = useState(false);
   const { state } = location;
 
   const {
@@ -19,22 +17,10 @@ const ProductPage = ({ location, addItem }) => {
     installments,
   } = state;
 
-  const handleImageLoadError = () => {
-    setPlaceholder(true);
-  };
-
-  const altName = toAltName(name);
-
   return (
     <section className="container" data-testid="product-page">
       <figure className="product-page">
-        <img
-          className="product-page__image"
-          onError={handleImageLoadError}
-          src={!placeholder ? image : fallbackPlaceholder}
-          title={altName}
-          alt={altName}
-        />
+        <LensImage name={name} image={image} />
         <figcaption className="product-page__details-wrapper">
           <div className="product-page__details">
             <h2>{name}</h2>

@@ -1,0 +1,65 @@
+.lens-image__wrapper {
+  position: relative;
+}
+
+.lens-image__image {
+  max-width: 100%;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.lens-image__button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  background: transparent;
+  border: transparent;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: all 450ms ease-in-out;
+  outline: -webkit-focus-ring-color none;
+}
+
+.lens-image__button.active {
+  background: #11ff2220;
+}
+
+.lens-image__wrapper:hover .lens-image__button {
+  opacity: 1;
+}
+
+.lens-image__button.active .svg-icon rect,
+.lens-image__button.active .svg-icon path,
+.lens-image__button.active .svg-icon polygon {
+  fill: limegreen;
+  opacity: 1;
+}
+
+.lens-image__wrapper .svg-icon-wrapper {
+  width: 5rem;
+  height: 5rem;
+}
+
+.lens-image__lens {
+  visibility: hidden;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 15rem;
+  height: 15rem;
+  border: 1px solid #3339;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+  transition: opacity 250ms ease-in-out;
+}
+
+.lens-image__lens.active {
+  visibility: visible;
+  cursor: none;
+}

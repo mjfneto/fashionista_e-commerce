@@ -1,44 +1,50 @@
 import React from 'react';
 
+let iconCounter = 0;
+
 export default {
-  iconCounter: 0,
   getSVG(icon) {
     let className, ariaLabelledBy;
 
-    this.iconCounter++;
+    iconCounter++;
 
     switch (icon) {
       case 'search':
         className = 'svg-icon--search';
-        ariaLabelledBy = `search-icon-${this.iconCounter}`;
+        ariaLabelledBy = `search-icon-${iconCounter}`;
         break;
       case 'shoppingBag':
         className = 'svg-icon--shopping-bag';
-        ariaLabelledBy = `shopping-bag-icon-${this.iconCounter}`;
+        ariaLabelledBy = `shopping-bag-icon-${iconCounter}`;
         break;
       case 'wishlist':
         className = 'svg-icon--shopping-bag';
-        ariaLabelledBy = `wishlist-icon-${this.iconCounter}`;
+        ariaLabelledBy = `wishlist-icon-${iconCounter}`;
+        break;
+
+      case 'lens':
+        className = 'svg-icon--lens';
+        ariaLabelledBy = `lens-icon-${iconCounter}`;
         break;
       case 'return':
         className = 'svg-icon--return';
-        ariaLabelledBy = `return-icon-${this.iconCounter}`;
+        ariaLabelledBy = `return-icon-${iconCounter}`;
         break;
       case 'add':
         className = 'svg-icon--add';
-        ariaLabelledBy = `add-icon-${this.iconCounter}`;
+        ariaLabelledBy = `add-icon-${iconCounter}`;
         break;
       case 'subtract':
         className = 'svg-icon--subtract';
-        ariaLabelledBy = `subtract-icon-${this.iconCounter}`;
+        ariaLabelledBy = `subtract-icon-${iconCounter}`;
         break;
       case 'remove':
         className = 'svg-icon--remove';
-        ariaLabelledBy = `remove-icon-${this.iconCounter}`;
+        ariaLabelledBy = `remove-icon-${iconCounter}`;
         break;
       case 'sale':
         className = 'svg-icon--sale';
-        ariaLabelledBy = `sale-icon-${this.iconCounter}`;
+        ariaLabelledBy = `sale-icon-${iconCounter}`;
         break;
       default:
         throw new Error('The icon passed is not in the library');
@@ -74,6 +80,14 @@ export default {
           fill="none"
           d="M13.22,2.984c-1.125,0-2.504,0.377-3.53,1.182C8.756,3.441,7.502,2.984,6.28,2.984c-2.6,0-4.714,2.116-4.714,4.716c0,0.32,0.032,0.644,0.098,0.96c0.799,4.202,6.781,7.792,7.46,8.188c0.193,0.111,0.41,0.168,0.627,0.168c0.187,0,0.376-0.041,0.55-0.127c0.011-0.006,1.349-0.689,2.91-1.865c0.021-0.016,0.043-0.031,0.061-0.043c0.021-0.016,0.045-0.033,0.064-0.053c3.012-2.309,4.6-4.805,4.6-7.229C17.935,5.1,15.819,2.984,13.22,2.984z M12.544,13.966c-0.004,0.004-0.018,0.014-0.021,0.018s-0.018,0.012-0.023,0.016c-1.423,1.076-2.674,1.734-2.749,1.771c0,0-6.146-3.576-6.866-7.363C2.837,8.178,2.811,7.942,2.811,7.7c0-1.917,1.554-3.47,3.469-3.47c1.302,0,2.836,0.736,3.431,1.794c0.577-1.121,2.161-1.794,3.509-1.794c1.914,0,3.469,1.553,3.469,3.47C16.688,10.249,14.474,12.495,12.544,13.966z"
         ></path>
+      </>
+    );
+  },
+  lens(ariaLabelledBy) {
+    return (
+      <>
+        <title id={ariaLabelledBy}>Lupa</title>
+        <path d="M17.659,9.597h-1.224c-0.199-3.235-2.797-5.833-6.032-6.033V2.341c0-0.222-0.182-0.403-0.403-0.403S9.597,2.119,9.597,2.341v1.223c-3.235,0.2-5.833,2.798-6.033,6.033H2.341c-0.222,0-0.403,0.182-0.403,0.403s0.182,0.403,0.403,0.403h1.223c0.2,3.235,2.798,5.833,6.033,6.032v1.224c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403v-1.224c3.235-0.199,5.833-2.797,6.032-6.032h1.224c0.222,0,0.403-0.182,0.403-0.403S17.881,9.597,17.659,9.597 M14.435,10.403h1.193c-0.198,2.791-2.434,5.026-5.225,5.225v-1.193c0-0.222-0.182-0.403-0.403-0.403s-0.403,0.182-0.403,0.403v1.193c-2.792-0.198-5.027-2.434-5.224-5.225h1.193c0.222,0,0.403-0.182,0.403-0.403S5.787,9.597,5.565,9.597H4.373C4.57,6.805,6.805,4.57,9.597,4.373v1.193c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403V4.373c2.791,0.197,5.026,2.433,5.225,5.224h-1.193c-0.222,0-0.403,0.182-0.403,0.403S14.213,10.403,14.435,10.403"></path>
       </>
     );
   },
