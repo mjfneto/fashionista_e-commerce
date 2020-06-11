@@ -11,6 +11,7 @@ import './LensImage.css';
 export default LensImage;
 
 function LensImage({ name, image }) {
+  const [blockage, setDeviceBlock] = useState(false);
   const [visibleIcon, setVisibleIcon] = useState(false);
   const [activeLens, setActiveLens] = useState(false);
   const [zoomFactor, setZoomFactor] = useState(2.5);
@@ -27,7 +28,7 @@ function LensImage({ name, image }) {
   const altName = toAltName(name);
 
   function getCursorPos(e) {
-    // Implementation by: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_image_zoom
+    // From: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_image_zoom
     e = e || window.event;
 
     const img = imgRef.current;
@@ -52,6 +53,7 @@ function LensImage({ name, image }) {
   };
 
   const onImgLoad = useCallback(() => {
+    if (blockage) return;
     const img = imgRef.current;
     const lens = lensRef.current;
 
@@ -64,7 +66,18 @@ function LensImage({ name, image }) {
 
     setLensRatio({ cx, cy });
     setVisibleIcon(true);
-  }, [zoomFactor]);
+  }, [blockage, zoomFactor]);
+
+  useEffect(() => {
+    // From: https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setDeviceBlock(true);
+    }
+  }, []);
 
   useEffect(() => {
     const img = imgRef.current;
@@ -185,25 +198,28 @@ function LensImage({ name, image }) {
         onLoad={onImgLoad}
         onMouseMove={activeLens ? moveLens : null}
       />
+      {!blockage && (
+        <>
+          <button
+            onClick={activateLens}
+            className={`lens-image__button${activeLens ? ' active' : ''}`}
+            ref={iconRef}
+            onMouseEnter={readyLens}
+          >
+            {visibleIcon && <LensIcon />}
+          </button>
 
-      <button
-        onClick={activateLens}
-        className={`lens-image__button${activeLens ? ' active' : ''}`}
-        ref={iconRef}
-        onMouseEnter={readyLens}
-      >
-        {visibleIcon && <LensIcon />}
-      </button>
-
-      <div
-        className={`lens-image__lens${activeLens ? ' active' : ''}`}
-        ref={lensRef}
-        onMouseMove={activeLens ? moveLens : null}
-        onMouseLeave={activeLens ? reset : null}
-        onWheel={activeLens ? handleZoom : null}
-      >
-        {zoomText(zoomFactor)}
-      </div>
+          <div
+            className={`lens-image__lens${activeLens ? ' active' : ''}`}
+            ref={lensRef}
+            onMouseMove={activeLens ? moveLens : null}
+            onMouseLeave={activeLens ? reset : null}
+            onWheel={activeLens ? handleZoom : null}
+          >
+            {zoomText(zoomFactor)}
+          </div>
+        </>
+      )}
     </div>
   );
 }
