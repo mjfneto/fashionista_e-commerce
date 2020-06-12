@@ -17,7 +17,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "build": "parcel build src/index.html",
+    "build": "NODE_ENV=staging parcel build src/index.html",
     "dev": "parcel src/index.html",
     "format": "prettier --write \"src/**/*.{js,html}\"",
     "lint": "eslint --quiet \"src/**/*.{js,jsx}\"",
