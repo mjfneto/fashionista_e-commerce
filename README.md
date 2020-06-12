@@ -4,6 +4,8 @@ Frontend React/Redux project aimed at implementing a responsive SPA (Single Page
 
 ## Launch
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aa875086-47b1-4eb9-8996-de70fc8b869f/deploy-status)](https://app.netlify.com/sites/e-fashionista/deploys)
+
 ## Showcasing
 
 - Text input search:
