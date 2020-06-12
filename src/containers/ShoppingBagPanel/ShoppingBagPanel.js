@@ -15,6 +15,8 @@ const ShoppingBagPanel = ({
   const focusRef = useRef();
 
   useEffect(() => {
+    if (!focusRef.current) return;
+
     focusRef.current.focus();
   }, []);
 
