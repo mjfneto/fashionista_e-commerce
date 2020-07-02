@@ -13,7 +13,10 @@ export const fetchProductsThunk = (dispatch, getState) => {
 
   dispatch(fetchProductsBegin());
 
-  return fetch(process.env.API_END_POINT)
+  return fetch(process.env.API_END_POINT, {
+    method: 'GET',
+    headers: { 'secret-key': process.env.API_KEY },
+  })
     .then(handleErrors)
     .then((res) => res.json())
     .then((products) => {
